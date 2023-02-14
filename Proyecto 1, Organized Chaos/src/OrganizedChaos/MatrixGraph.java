@@ -86,8 +86,95 @@ public class MatrixGraph<T> {
         this.adjMatrix[number1][number2] = distance;
     }
     
+    /**
+    * Imprime los vértices del grafo
+    */
+    public void printVerts() {
+
+        String sVerts = "";
+        for (int i = 0; i < getVertsNum(); i++) {
+            sVerts += verts[i].getData() + " -> ";
+
+        }
+        JOptionPane.showMessageDialog(null, sVerts);
+    }
     
+    /**
+    * Imprime la matriz con las relaciones de distancia entre los almacenes en sus posiciones [i][j]
+    */
+    public void printArchs() {
+        
+        String sMatrix = "";
+        for (int i = 0; i < this.adjMatrix.length; i++) {
+            for (int j = 0; j < this.adjMatrix[i].length; j++) {
+                sMatrix += this.adjMatrix[i][j] + " ";
+            }
+            sMatrix += "\n";
+        }
+        JOptionPane.showMessageDialog(null, sMatrix);
+    }
     
+    public int[] BreadthFirstSearch(String origin, int[] marked) {
+        int w, origen;
+
+        origen = findVert(origin);
+        if (origen < 0) {
+            JOptionPane.showMessageDialog(null, "That origin vertex doesn't exist");
+        }
+
+        Queue queue = new Queue();
+
+        if (marked == null) {
+            marked = new int[getVertsNum()];
+            //Inicializa todos los vértices como "no marcados"
+            for (int i = 0; i < getVertsNum(); i++) {
+                marked[i] = -1;
+            }
+            marked[origen] = 0; //Marca el origen como "visitado"
+        } else {
+            for (int i = 0; i < marked.length; i++) {
+                if (marked[i] == marked[origen]) {
+                    marked[origen] = i - 1; //Marca el origen como "visitado"
+                    
+                }
+            }
+        }
+
+        queue.add(origen);
+
+        while (!queue.isEmpty()) {
+            w = (int) queue.dispatch();
+            System.out.println("Vértice " + getVerts()[w].getData() + " visitado");
+            //Inserta en la Queue a los vértices adyacentes de "w" no marcados
+            for (int u = 0; u < getVertsNum(); u++) {
+                if ((getAdjMatrix()[w][u] > 0) && marked[u] == -1) {
+                    marked[u] = marked[w] + 1; //Se marca el vértice "u" con el número de arcos hasta él
+                    queue.add(u);
+
+                }
+            }
+
+        }
+
+        String sBFS = "";
+        for (int i = 0; i < marked.length; i++) {
+            if (i == marked.length - 1) {
+                sBFS += marked[i];
+            } else {
+                sBFS += marked[i] + ", ";
+
+            }
+        }
+        JOptionPane.showMessageDialog(null, sBFS);
+
+        for (int i = 0; i < marked.length; i++) {
+            if (marked[i] == -1) {
+                BreadthFirstSearch(getVerts()[i].getName(), marked);
+
+            }
+        }
+        return marked;
+    }
     
     
    
