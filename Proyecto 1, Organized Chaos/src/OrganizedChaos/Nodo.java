@@ -3,6 +3,7 @@ package OrganizedChaos;
 public class Nodo<T> {
     private T data;
     private Nodo next;
+    private Nodo previous;
 
     public Nodo(T data) {
         this.data = data;
@@ -23,6 +24,14 @@ public class Nodo<T> {
 
     public void setNext(Nodo siguiente) {
         this.next = siguiente;
+    }
+
+    public Nodo getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(Nodo previous) {
+        this.previous = previous;
     }
     
     
