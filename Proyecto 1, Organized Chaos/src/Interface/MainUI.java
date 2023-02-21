@@ -44,6 +44,11 @@ public class MainUI extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         addFile.setText("Agregar un archivo (.txt)");
+        addFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addFileActionPerformed(evt);
+            }
+        });
         jPanel1.add(addFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, 50));
 
         warehouseManage.setText("Gestión de almacenes");
@@ -86,6 +91,11 @@ public class MainUI extends javax.swing.JFrame {
         OrderUI v2 = new OrderUI(this);
         
     }//GEN-LAST:event_order1ActionPerformed
+
+    private void addFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFileActionPerformed
+        JFileChooser v6 = new JFileChooser(this);
+        
+    }//GEN-LAST:event_addFileActionPerformed
 
     /**
      * @param args the command line arguments
