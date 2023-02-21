@@ -5,6 +5,8 @@
  */
 package OrganizedChaos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rolando
@@ -13,17 +15,60 @@ public class Vertex {
 
     private String name;
     private int number;
+    private LinkedList stock;
 
     public Vertex(String name) {
         this.name = name;
         this.number = -1;
+        this.stock = new LinkedList();
 
     }
     
-    public boolean equals(Vertex ver) {
-        return name.equals(ver.name);
+    public Vertex(String name, LinkedList stock) {
+        this.name = name;
+        this.stock = stock;
+        this.number = -1;
     }
+    
+    public Product addProduct(String name, int quantity) {
+        
+        Product producto = new Product(name, quantity);
+        
+        getStock().addLast(producto);
+        return producto;
+    }
+    
+    public String printStock() {
+        
+        if (stock.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Your list is empty");
 
+        } else {
+            String sStock = "Inventario de " + getName() + "\n" + "- ";
+            
+            for (int i = 0; i < stock.getSize(); i++) {
+                Product producto = (Product) stock.getElement(i);
+                
+                if (i == stock.getSize() - 1) {
+                    sStock += producto.getName()+ "(" + producto.getQuantity() + ")" + "\n";
+                } else {
+                    sStock += producto.getName() + "(" + producto.getQuantity() + ")" + "\n" + "- ";
+                }
+            }
+
+            return sStock;
+
+        }
+        return null;
+    }
+    
+    
+    public boolean equals(Vertex ver) {
+        return getName().equals(ver.getName());
+    }
+   
+    
+    //Getters and Setters
     public String getData() {
         String data = getName() + "(" + getNumber() + ")";
         return data;
@@ -57,4 +102,12 @@ public class Vertex {
         this.number = number;
     }
 
+    public LinkedList getStock() {
+        return stock;
+    }
+
+    public void setStock(LinkedList stock) {
+        this.stock = stock;
+    }
+  
 }
