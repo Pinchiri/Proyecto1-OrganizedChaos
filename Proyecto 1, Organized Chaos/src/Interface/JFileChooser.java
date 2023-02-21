@@ -16,12 +16,18 @@ import javax.swing.JOptionPane;
  * @author alexi
  */
 public class JFileChooser extends javax.swing.JFrame {
-
+    
+    public static MainUI v1;
     /**
      * Creates new form JFileChooser
      */
-    public JFileChooser() {
+    public JFileChooser(MainUI v1) {
         initComponents();
+        this.v1 = v1;
+        v1.setVisible(false);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        
     }
        
     // Abrir archvo  
@@ -106,8 +112,9 @@ public class JFileChooser extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         areaDeTexto = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        open1 = new javax.swing.JButton();
+        save = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -129,39 +136,52 @@ public class JFileChooser extends javax.swing.JFrame {
         areaDeTexto.setRows(5);
         jScrollPane2.setViewportView(areaDeTexto);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 350, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 350, -1));
 
         jLabel2.setText("Texto a guardar: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jButton1.setText("Abrir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        open1.setText("Abrir");
+        open1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                open1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
+        jPanel1.add(open1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
 
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        save.setText("Guardar");
+        save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                saveActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        back.setText("Volver");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        this.setVisible(false);
+        v1.setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         this.guardarArchivo();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void open1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_open1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,20 +213,21 @@ public class JFileChooser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFileChooser().setVisible(true);
+                new JFileChooser(v1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDeTexto;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton open1;
+    private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
 }
