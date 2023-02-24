@@ -58,7 +58,7 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 90, 30));
 
-        addArch.setText("Agregar un nuevo arco");
+        addArch.setText("Agregar un nuevo camino");
         addArch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addArchActionPerformed(evt);
@@ -75,6 +75,11 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
         jPanel1.add(manageStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 200, 30));
 
         addWarehouse.setText("Agregar almacén");
+        addWarehouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addWarehouseActionPerformed(evt);
+            }
+        });
         jPanel1.add(addWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 200, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 420));
@@ -88,13 +93,17 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void addArchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArchActionPerformed
-        // TODO add your handling code here:
+        newArchUI v9 = new newArchUI(this);
     }//GEN-LAST:event_addArchActionPerformed
 
     private void manageStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockActionPerformed
         WarehouseStockManagerUI v4 = new WarehouseStockManagerUI(this);
         
     }//GEN-LAST:event_manageStockActionPerformed
+
+    private void addWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWarehouseActionPerformed
+        addWarehouseUI addWarehouse = new addWarehouseUI(this);
+    }//GEN-LAST:event_addWarehouseActionPerformed
 
     /**
      * @param args the command line arguments

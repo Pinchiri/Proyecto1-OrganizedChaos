@@ -5,12 +5,51 @@
  */
 package Interface;
 
+import OrganizedChaos.MatrixGraph;
+
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
+import org.graphstream.ui.swing_viewer.SwingViewer;
+import org.graphstream.ui.swing_viewer.ViewPanel;
+
 /**
  *
  * @author Rolando
  */
 public class MainUI extends javax.swing.JFrame {
+    
+    
+    public static MatrixGraph mainGraph = new MatrixGraph();
+    
+    
+    private void displayGraph(Graph graph) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+      JPanel panel = new JPanel(new GridLayout()){
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(640, 480);
+            }
+        };
+        frame.setSize(panel.getWidth(), panel.getHeight());
+     
+        Viewer viewer = new SwingViewer(graph, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+        viewer.enableAutoLayout();
+        ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false);
+        panel.add(viewPanel);
+        frame.add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);      
+    }
+ 
     /**
      * Creates new form Main
      */
@@ -18,6 +57,25 @@ public class MainUI extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        
+        mainGraph.newVert("A");
+        mainGraph.newVert("B");
+        mainGraph.newVert("C");
+        mainGraph.newVert("D");
+        mainGraph.newVert("E");
+        
+        mainGraph.newArch("A", "B", 10);
+        mainGraph.newArch("A", "C", 20);
+        mainGraph.newArch("B", "C", 5);
+        mainGraph.newArch("B", "D", 8);
+        mainGraph.newArch("C", "D", 4);
+        mainGraph.newArch("C", "E", 13);
+        mainGraph.newArch("D", "E", 3);
+        mainGraph.newArch("E", "A", 25);
+        
+        mainGraph.getVert("A").addProduct("Pantalla", 3);
+        
+        
     }
 
     /**
@@ -75,6 +133,11 @@ public class MainUI extends javax.swing.JFrame {
         jPanel1.add(Amazon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 110, 50));
 
         showGraph1.setText("Mostrar grafo");
+        showGraph1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGraph1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(showGraph1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 460));
@@ -96,6 +159,30 @@ public class MainUI extends javax.swing.JFrame {
         JFileChooser v6 = new JFileChooser(this);
         
     }//GEN-LAST:event_addFileActionPerformed
+
+    private void showGraph1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraph1ActionPerformed
+        // Se crea el objeto grafo de la librería GraphStream
+        Graph graph = new MultiGraph("Amazon");
+        //Se modifican las propiedades para que la ventana corra mediante la extensión de Swing en vez de JavaFX
+        System.setProperty("org.graphstream.ui", "swing");
+        
+        // Se recorre nuestro arreglo de almacenes del grafo para introducir los vértices al grafo de GraphStream
+        for (int i=0;i<mainGraph.getVertsNum();i++){
+            graph.addNode(mainGraph.getVerts()[i].getName());
+        }
+        // Se recorre la matriz de adyacencia de nuestro grafo para añadir los arcos y pesos al grafo de GraphStream
+        for (int i=0; i < mainGraph.getVertsNum(); i++){
+            String node1 = mainGraph.getVerts()[i].getName();
+            for (int j=0; j<mainGraph.getVertsNum(); j++){
+                String node2 = mainGraph.getVerts()[j].getName();
+                if (mainGraph.getAdjMatrix()[i][j] > 0){
+                    String nodeAux = node1 + node2;
+                    graph.addEdge(nodeAux, node1, node2, true).setAttribute("ui.label",mainGraph.getAdjMatrix()[i][j]);
+                }
+            }
+        }
+        this.displayGraph(graph);
+    }//GEN-LAST:event_showGraph1ActionPerformed
 
     /**
      * @param args the command line arguments

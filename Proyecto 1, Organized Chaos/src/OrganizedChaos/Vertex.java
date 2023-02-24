@@ -41,7 +41,7 @@ public class Vertex {
     public String printStock() {
         
         if (stock.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Your list is empty");
+            JOptionPane.showMessageDialog(null, "El inventario de este Almacén está vacío");
 
         } else {
             String sStock = "Inventario de " + getName() + "\n" + "- ";
