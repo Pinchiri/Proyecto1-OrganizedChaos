@@ -5,23 +5,16 @@
  */
 package Interface;
 
-import static Interface.OrderUI.v1;
 import OrganizedChaos.MatrixGraph;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Component;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.PopupMenu;
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.MultiGraph;
 import org.graphstream.ui.view.Viewer;
-import org.graphstream.ui.view.View;
 import org.graphstream.ui.swing_viewer.SwingViewer;
 import org.graphstream.ui.swing_viewer.ViewPanel;
 
@@ -79,6 +72,9 @@ public class MainUI extends javax.swing.JFrame {
         mainGraph.newArch("C", "E", 13);
         mainGraph.newArch("D", "E", 3);
         mainGraph.newArch("E", "A", 25);
+        
+        mainGraph.getVert("A").addProduct("Pantalla", 3);
+        
         
     }
 
@@ -165,28 +161,27 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addFileActionPerformed
 
     private void showGraph1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraph1ActionPerformed
+        // Se crea el objeto grafo de la librería GraphStream
         Graph graph = new MultiGraph("Amazon");
-        // Se modifica para que la ventana aparezca ya que sin esto el .display() no funciona.
+        //Se modifican las propiedades para que la ventana corra mediante la extensión de Swing en vez de JavaFX
         System.setProperty("org.graphstream.ui", "swing");
-        // Se crea el objeto grafo de tipo grafoGraphStream.
-        // Se recorre nuestro arreglo de almacenes del grafo para ahora meterlos en el objeto grafo de GraphStream.
+        
+        // Se recorre nuestro arreglo de almacenes del grafo para introducir los vértices al grafo de GraphStream
         for (int i=0;i<mainGraph.getVertsNum();i++){
             graph.addNode(mainGraph.getVerts()[i].getName());
         }
-        // Se recorre la matriz de adyacencia para añadir los arcos al objeto grafoGraphStream.
+        // Se recorre la matriz de adyacencia de nuestro grafo para añadir los arcos y pesos al grafo de GraphStream
         for (int i=0; i < mainGraph.getVertsNum(); i++){
             String node1 = mainGraph.getVerts()[i].getName();
             for (int j=0; j<mainGraph.getVertsNum(); j++){
                 String node2 = mainGraph.getVerts()[j].getName();
-                if (mainGraph.getAdjMatrix()[i][j]>0){
+                if (mainGraph.getAdjMatrix()[i][j] > 0){
                     String nodeAux = node1 + node2;
                     graph.addEdge(nodeAux, node1, node2, true).setAttribute("ui.label",mainGraph.getAdjMatrix()[i][j]);
                 }
             }
         }
         this.displayGraph(graph);
-//        Viewer viewer = graph.display();
-//        viewer.enableAutoLayout();
     }//GEN-LAST:event_showGraph1ActionPerformed
 
     /**

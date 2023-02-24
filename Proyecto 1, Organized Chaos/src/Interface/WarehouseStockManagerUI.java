@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import static Interface.MainUI.mainGraph;
+import OrganizedChaos.Vertex;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rolando
@@ -43,6 +47,7 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
         EnterName_label = new javax.swing.JLabel();
         choose1 = new javax.swing.JButton();
         addNewProduct = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         warehouseStock = new javax.swing.JTextArea();
 
@@ -65,7 +70,7 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 90, 30));
 
         addExistingProduct.setText("Añadir a producto existente");
-        jPanel1.add(addExistingProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 190, 30));
+        jPanel1.add(addExistingProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 190, 30));
 
         warehouseName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,16 +86,28 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
         jPanel1.add(EnterName_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         choose1.setText("Escoger");
+        choose1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choose1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(choose1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 80, 30));
 
         addNewProduct.setText("Agregar nuevo producto");
-        jPanel1.add(addNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 190, 30));
+        addNewProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewProductActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 190, 30));
 
         warehouseStock.setColumns(20);
         warehouseStock.setRows(5);
         jScrollPane2.setViewportView(warehouseStock);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 170));
+        jScrollPane1.setViewportView(jScrollPane2);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, 170));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 450));
 
@@ -105,6 +122,28 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
     private void warehouseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_warehouseNameActionPerformed
+
+    private void choose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choose1ActionPerformed
+        String sWarehouseName = warehouseName.getText();
+        
+        for (int i = 0; i < mainGraph.getVertsNum(); i++) {
+            Vertex warehouse = mainGraph.getVerts()[i];
+            if (sWarehouseName.equals(warehouse.getName())) {
+                warehouseStock.setText(warehouse.printStock());
+            } else if((i == mainGraph.getVertsNum() - 1) && !sWarehouseName.equals(warehouse.getName())) {
+                JOptionPane.showMessageDialog(null, "El almacén no se ha encontrado");
+            }
+        }
+
+    }//GEN-LAST:event_choose1ActionPerformed
+
+    private void addNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewProductActionPerformed
+       String sWarehouseName = warehouseName.getText();
+       
+        if (!"".equals(sWarehouseName)) {
+            
+        }
+    }//GEN-LAST:event_addNewProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +191,7 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
     private javax.swing.JButton choose1;
     private javax.swing.JLabel gestionar_label;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel stockWarehouse_label;
     private javax.swing.JTextField warehouseName;

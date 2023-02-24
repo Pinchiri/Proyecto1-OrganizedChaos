@@ -63,6 +63,21 @@ public class MatrixGraph<T> {
     
     /**
     * 
+     * @param name (Nombre del vértice a buscar)
+     * Busca un vértice dado su nombre en el arreglo de vértices del grafo
+     * @return El vértice que se quiere buscar
+    */
+    public Vertex getVert(String name) {
+        for (int i = 0; i < getVertsNum(); i++) {
+            if (name.equals(getVerts()[i].getName())) {
+                return getVerts()[i];
+            }
+        }
+        return null;
+    }
+    
+    /**
+    * 
      * @param name (Nombre del vértice)
      * Añade un vértice al grafo
     */
@@ -121,7 +136,12 @@ public class MatrixGraph<T> {
         }
         JOptionPane.showMessageDialog(null, sMatrix);
     }
-    
+    /**
+    * Imprime la matriz con las relaciones de distancia entre los almacenes en sus posiciones [i][j]
+     * @param origin (Vértice desde el cual se quiere comenzar el recorrido)
+     * @param marked (Arreglo de vértices ya marcados)
+     * @return El arreglo de vértices marcados que ya fueron visitados
+    */
     public int[] BreadthFirstSearch(String origin, int[] marked) {
         int w, origen;
 

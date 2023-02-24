@@ -93,7 +93,7 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void addArchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArchActionPerformed
-        // TODO add your handling code here:
+        newArchUI v9 = new newArchUI(this);
     }//GEN-LAST:event_addArchActionPerformed
 
     private void manageStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockActionPerformed

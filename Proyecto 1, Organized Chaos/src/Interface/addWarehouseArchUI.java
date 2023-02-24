@@ -119,24 +119,29 @@ public class addWarehouseArchUI extends javax.swing.JFrame {
     }//GEN-LAST:event_destinyActionPerformed
 
     private void addArchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArchesActionPerformed
+        String sOrigin = origin.getText();
+        String sValueOrigin = originValue.getText();
 
+        String sDestiny = destiny.getText();
+        String sValueDestiny = destinyValue.getText();
         try {
-            String sOrigin = origin.getText();
-            int valueOrigin = Integer.parseInt(originValue.getText());
-            
-            String sDestiny = destiny.getText();
-            int valueDestiny = Integer.parseInt(destinyValue.getText());
-        
-            if ("".equals(sOrigin) || "".equals(sDestiny) ||  "".equals(originValue) || "".equals(destinyValue)) {
+            if ("".equals(sOrigin) || "".equals(sDestiny) ||  "".equals(sValueOrigin) || "".equals(sValueDestiny)) {
                 JOptionPane.showMessageDialog(null, "Debe agregar los nombres de los almacenes origenes y destino para crear ambos caminos");
-            } else if(valueOrigin < 0 || valueDestiny < 0) {
+            }else {
+                int valueOrigin = Integer.parseInt(sValueOrigin);
+                int valueDestiny = Integer.parseInt(sValueDestiny);
+                
+                if(valueOrigin < 0 || valueDestiny < 0) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar distancias positivas. ");
-            } else {
-                mainGraph.newArch(sOrigin, sWarehouseName, valueOrigin);
-                mainGraph.newArch(sWarehouseName, sDestiny, valueDestiny);
-                JOptionPane.showMessageDialog(null, "Se han agregado los caminos con éxito!");
-                this.setVisible(false);
-                newWarehouse.setVisible(true);
+                
+                } else {
+                    mainGraph.newArch(sOrigin, sWarehouseName, valueOrigin);
+                    mainGraph.newArch(sWarehouseName, sDestiny, valueDestiny);
+                    JOptionPane.showMessageDialog(null, "Se han agregado los caminos con éxito!");
+                    this.setVisible(false);
+                    newWarehouse.setVisible(true);
+                }
+                
             }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Se ha producido un error: " + e);

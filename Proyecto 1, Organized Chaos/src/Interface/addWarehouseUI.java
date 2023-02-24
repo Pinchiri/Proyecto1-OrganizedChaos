@@ -89,14 +89,18 @@ public class addWarehouseUI extends javax.swing.JFrame {
     }//GEN-LAST:event_warehouseNameActionPerformed
 
     private void addWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWarehouseActionPerformed
-        
-        
+
         try {
             String sWarehouseName = warehouseName.getText();
-            mainGraph.newVert(sWarehouseName);
-            JOptionPane.showMessageDialog(null,"Se ha añadido el almacén con éxito!");
-            addWarehouseArchUI ways = new addWarehouseArchUI(this, sWarehouseName);
-                        
+            
+            if ("".equals(sWarehouseName)) {
+                JOptionPane.showMessageDialog(null, "Introduzca el nombre del almacén");
+            } else {
+                mainGraph.newVert(sWarehouseName);
+                JOptionPane.showMessageDialog(null,"Se ha añadido el almacén con éxito!");
+                addWarehouseArchUI ways = new addWarehouseArchUI(this, sWarehouseName);  
+            }
+                      
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Se produjo un error. Introduzca el nombre del almacén.  " + e);
         }
