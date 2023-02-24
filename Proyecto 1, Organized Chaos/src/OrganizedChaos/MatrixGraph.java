@@ -21,6 +21,14 @@ public class MatrixGraph<T> {
     
     public MatrixGraph() {
         this.maxVerts = 20;
+        this.adjMatrix = new int[20][20];
+        this.verts = new Vertex[20];
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                this.adjMatrix[i][j] = 0;
+            }
+        }
+        this.vertsNum = 0;
     }
     
     public MatrixGraph(int size) {
