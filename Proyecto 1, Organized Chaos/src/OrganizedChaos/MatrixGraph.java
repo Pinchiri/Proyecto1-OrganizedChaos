@@ -5,7 +5,13 @@
  */
 package OrganizedChaos;
 
+import java.awt.Container;
+import java.awt.Dimension;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -145,7 +151,7 @@ public class MatrixGraph<T> {
      * @param marked (Arreglo de vértices ya marcados)
      * @return El arreglo de vértices marcados que ya fueron visitados
     */
-    public int[] BreadthFirstSearch(String origin, int[] marked) {
+    public T BreadthFirstSearch(String origin, int[] marked, boolean disponibility) {
         int w, origen;
 
         origen = findVert(origin);
@@ -172,12 +178,22 @@ public class MatrixGraph<T> {
         }
 
         queue.add(origen);
-
+        String sDisponibility = "";
         while (!queue.isEmpty()) {
+            
             w = (int) queue.dispatch();
+            if (disponibility == true) {
+                    
+                    Vertex vert = getVerts()[w];
+                    sDisponibility += vert.printStock();
+                    sDisponibility += "\n";
+                }
+            
             System.out.println("Vértice " + getVerts()[w].getData() + " visitado");
             //Inserta en la Queue a los vértices adyacentes de "w" no marcados
             for (int u = 0; u < getVertsNum(); u++) {
+                
+                
                 if ((getAdjMatrix()[w][u] > 0) && marked[u] == -1) {
                     marked[u] = marked[w] + 1; //Se marca el vértice "u" con el número de arcos hasta él
                     queue.add(u);
@@ -186,29 +202,21 @@ public class MatrixGraph<T> {
             }
 
         }
-
-        String sBFS = "";
-        for (int i = 0; i < marked.length; i++) {
-            if (i == marked.length - 1) {
-                sBFS += marked[i];
-            } else {
-                sBFS += marked[i] + ", ";
-
-            }
+        if (disponibility == true) {
+            return (T) sDisponibility;
         }
-        JOptionPane.showMessageDialog(null, sBFS);
-
+    
         for (int i = 0; i < marked.length; i++) {
             if (marked[i] == -1) {
-                BreadthFirstSearch(getVerts()[i].getName(), marked);
+                BreadthFirstSearch(getVerts()[i].getName(), marked, false);
             }
         }
-        return marked;
+        return (T) marked;
     }
     
-    public int[] DepthFirstSearch(String origin, int[] marked) {
+    public T DepthFirstSearch(String origin, int[] marked, boolean disponibility, String sDisponibility) {
         int origen = findVert(origin);
-        
+        System.out.println(origin);
         if (origen < 0) {
             JOptionPane.showMessageDialog(null, "That origin vertex doesn't exist");
         }
@@ -220,6 +228,7 @@ public class MatrixGraph<T> {
                 marked[i] = -1;
             }
             marked[origen] = 0; //Marca el origen como "visitado"
+       
         } else {
             for (int i = 0; i < marked.length; i++) {
                 if (marked[i] == marked[origen]) {
@@ -228,18 +237,34 @@ public class MatrixGraph<T> {
                 }
             }
         }
+        
+        Vertex actual = getVert(origin);
+        sDisponibility += actual.printStock();
         System.out.println("Vértice " + getVerts()[origen].getData() + " visitado");
+        
         for (int i = 0; i < getVertsNum(); i++) {
-            if((getVert(origin).getNumber() != i) && (marked[i] < 0) && (archExist(getVert(origin), getVerts()[i])))
-                DepthFirstSearch(getVerts()[i].getName(), marked);
+                
+            if((getVert(origin).getNumber() != i) && (marked[i] < 0) && (archExist(getVert(origin), getVerts()[i]))) {
+                
+                DepthFirstSearch(getVerts()[i].getName(), marked, disponibility, sDisponibility); 
+            }
+                
         }
+        
+        if (disponibility == true) {
+            return (T) sDisponibility;
+        }
+         
+        
+        
+        
 //        
 //        for (int i = 0; i < marked.length; i++) {
 //            if (marked[i] == -1) {
 //                DepthFirstSearch(getVerts()[i].getName(), marked);
 //            }
 //        }
-        return marked;
+        return (T) marked;
     }
    
 

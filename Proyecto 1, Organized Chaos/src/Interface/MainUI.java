@@ -72,7 +72,22 @@ public class MainUI extends javax.swing.JFrame {
         mainGraph.newArch("C", "E", 13);
         mainGraph.newArch("D", "E", 3);
         mainGraph.newArch("E", "A", 25);
-  
+        
+        mainGraph.getVerts()[0].addProduct("Pantalla", 3);
+        mainGraph.getVerts()[0].addProduct("RAM", 2);
+        mainGraph.getVerts()[0].addProduct("Procesador", 1);
+        
+        mainGraph.getVerts()[1].addProduct("Pantalla", 3);
+        mainGraph.getVerts()[1].addProduct("Grafica", 5);
+        
+        mainGraph.getVerts()[2].addProduct("Placa", 7);
+        mainGraph.getVerts()[2].addProduct("Teclado", 8);
+        
+        mainGraph.getVerts()[3].addProduct("Mouse", 2);
+        
+        mainGraph.getVerts()[4].addProduct("Microfono", 7);
+        mainGraph.getVerts()[4].addProduct("Audifonos", 10);
+        
     }
 
     /**
@@ -123,6 +138,11 @@ public class MainUI extends javax.swing.JFrame {
         jPanel1.add(order1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 170, 40));
 
         disponibility.setText("Reporte de disponibilidad");
+        disponibility.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disponibilityActionPerformed(evt);
+            }
+        });
         jPanel1.add(disponibility, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 170, 40));
 
         Amazon.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -180,6 +200,10 @@ public class MainUI extends javax.swing.JFrame {
         }
         this.displayGraph(graph);
     }//GEN-LAST:event_showGraph1ActionPerformed
+
+    private void disponibilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibilityActionPerformed
+        DisponibilityUI disponibility = new DisponibilityUI(this);
+    }//GEN-LAST:event_disponibilityActionPerformed
 
     /**
      * @param args the command line arguments

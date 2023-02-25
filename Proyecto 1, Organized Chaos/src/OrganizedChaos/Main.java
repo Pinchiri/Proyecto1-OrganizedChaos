@@ -39,9 +39,9 @@ public class Main {
         graph.printArchs();
         
         int[] marked = null;
-        graph.BreadthFirstSearch("D", marked);
+        graph.BreadthFirstSearch("D", marked, false);
         System.out.println("\n");
-        graph.DepthFirstSearch("D", marked);
+        graph.DepthFirstSearch("D", marked, false, "");
     }
     
 }
