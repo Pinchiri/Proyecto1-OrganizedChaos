@@ -72,10 +72,7 @@ public class MainUI extends javax.swing.JFrame {
         mainGraph.newArch("C", "E", 13);
         mainGraph.newArch("D", "E", 3);
         mainGraph.newArch("E", "A", 25);
-        
-        mainGraph.getVert("A").addProduct("Pantalla", 3);
-        
-        
+  
     }
 
     /**

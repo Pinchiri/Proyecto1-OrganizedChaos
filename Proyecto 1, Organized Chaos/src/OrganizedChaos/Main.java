@@ -16,24 +16,32 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        MatrixGraph graph = new MatrixGraph(6);
-        graph.newVert("Alicante");
-        graph.newVert("Barcelona");
-        graph.newVert("Sevilla");
-        graph.newVert("Santurce");
-        graph.newVert("Caracas");
-        graph.newVert("Maracay");
-        
+        MatrixGraph graph = new MatrixGraph(7);
+        graph.newVert("A");
+        graph.newVert("B");
+        graph.newVert("C");
+        graph.newVert("D");
+        graph.newVert("H");
+        graph.newVert("R");
+        graph.newVert("T");
 
         graph.printVerts();
 
-        graph.newArch("Alicante", "Sevilla", 4);
-        graph.newArch("Alicante", "Barcelona", 5);
-        graph.newArch("Barcelona", "Sevilla", 20);
+        graph.newArch("D", "B", 4);
+        graph.newArch("D", "C", 4);
+        graph.newArch("B", "H", 4);
+        graph.newArch("C", "R", 4);
+        graph.newArch("R", "H", 4);
+        graph.newArch("H", "A", 4);
+        graph.newArch("H", "T", 4); 
+        graph.newArch("H", "D", 4);
+        
         graph.printArchs();
         
         int[] marked = null;
-        graph.BreadthFirstSearch("Alicante", marked);
+        graph.BreadthFirstSearch("D", marked);
+        System.out.println("\n");
+        graph.DepthFirstSearch("D", marked);
     }
     
 }

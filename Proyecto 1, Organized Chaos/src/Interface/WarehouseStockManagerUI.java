@@ -44,12 +44,14 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
         addExistingProduct = new javax.swing.JButton();
         warehouseName = new javax.swing.JTextField();
         stockWarehouse_label = new javax.swing.JLabel();
-        EnterName_label = new javax.swing.JLabel();
+        update2_label = new javax.swing.JLabel();
         choose1 = new javax.swing.JButton();
         addNewProduct = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         warehouseStock = new javax.swing.JTextArea();
+        EnterName_label1 = new javax.swing.JLabel();
+        update_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -70,6 +72,11 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 90, 30));
 
         addExistingProduct.setText("Añadir a producto existente");
+        addExistingProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addExistingProductActionPerformed(evt);
+            }
+        });
         jPanel1.add(addExistingProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 190, 30));
 
         warehouseName.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +89,8 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
         stockWarehouse_label.setText("Inventario del almacén:");
         jPanel1.add(stockWarehouse_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
-        EnterName_label.setText("Introduzca el nombre de un almacén");
-        jPanel1.add(EnterName_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        update2_label.setText("actualizar el Inventario mostrado");
+        jPanel1.add(update2_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 190, 10));
 
         choose1.setText("Escoger");
         choose1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +116,12 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, 170));
 
+        EnterName_label1.setText("Introduzca el nombre de un almacén");
+        jPanel1.add(EnterName_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        update_label.setText("Debe darle al botón para ");
+        jPanel1.add(update_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 200, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 450));
 
         pack();
@@ -126,24 +139,40 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
     private void choose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choose1ActionPerformed
         String sWarehouseName = warehouseName.getText();
         
-        for (int i = 0; i < mainGraph.getVertsNum(); i++) {
-            Vertex warehouse = mainGraph.getVerts()[i];
-            if (sWarehouseName.equals(warehouse.getName())) {
-                warehouseStock.setText(warehouse.printStock());
-            } else if((i == mainGraph.getVertsNum() - 1) && !sWarehouseName.equals(warehouse.getName())) {
-                JOptionPane.showMessageDialog(null, "El almacén no se ha encontrado");
-            }
-        }
-
+        Vertex warehouse = mainGraph.getVert(sWarehouseName);
+        
+        if(warehouse != null) {
+            JOptionPane.showMessageDialog(null, "El almacén se ha encontrado con éxito!");
+            warehouseStock.setText(warehouse.printStock());
+        } else {
+            JOptionPane.showMessageDialog(null, "El almacén no se ha encontrado");
+        } 
     }//GEN-LAST:event_choose1ActionPerformed
 
     private void addNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewProductActionPerformed
        String sWarehouseName = warehouseName.getText();
        
-        if (!"".equals(sWarehouseName)) {
+       Vertex warehouse = mainGraph.getVert(sWarehouseName);
+        
+        if(warehouse != null) {
             
-        }
+            AddNewProductUI newProduct = new AddNewProductUI(this, sWarehouseName);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe escoger un almacén primero");
+        } 
     }//GEN-LAST:event_addNewProductActionPerformed
+
+    private void addExistingProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExistingProductActionPerformed
+        String sWarehouseName = warehouseName.getText();
+       
+        Vertex warehouse = mainGraph.getVert(sWarehouseName);
+        
+        if(warehouse != null) {
+            AddProductUI existingProduct = new AddProductUI(this, sWarehouseName);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe escoger un almacén primero");
+        } 
+    }//GEN-LAST:event_addExistingProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,7 +213,7 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel EnterName_label;
+    private javax.swing.JLabel EnterName_label1;
     private javax.swing.JButton addExistingProduct;
     private javax.swing.JButton addNewProduct;
     private javax.swing.JButton back;
@@ -194,6 +223,8 @@ public class WarehouseStockManagerUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel stockWarehouse_label;
+    private javax.swing.JLabel update2_label;
+    private javax.swing.JLabel update_label;
     private javax.swing.JTextField warehouseName;
     private javax.swing.JTextArea warehouseStock;
     // End of variables declaration//GEN-END:variables

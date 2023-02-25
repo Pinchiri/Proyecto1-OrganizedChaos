@@ -109,6 +109,9 @@ public class MatrixGraph<T> {
         this.adjMatrix[number1][number2] = distance;
     }
     
+    public boolean archExist(Vertex vert1, Vertex vert2) {
+        return getAdjMatrix()[vert1.getNumber()][vert2.getNumber()] != 0;
+    }
     /**
     * Imprime los vértices del grafo
     */
@@ -128,8 +131,8 @@ public class MatrixGraph<T> {
     public void printArchs() {
         
         String sMatrix = "";
-        for (int i = 0; i < this.adjMatrix.length; i++) {
-            for (int j = 0; j < this.adjMatrix[i].length; j++) {
+        for (int i = 0; i < getAdjMatrix().length; i++) {
+            for (int j = 0; j < getAdjMatrix()[i].length; j++) {
                 sMatrix += this.adjMatrix[i][j] + " ";
             }
             sMatrix += "\n";
@@ -198,13 +201,46 @@ public class MatrixGraph<T> {
         for (int i = 0; i < marked.length; i++) {
             if (marked[i] == -1) {
                 BreadthFirstSearch(getVerts()[i].getName(), marked);
-
             }
         }
         return marked;
     }
     
-    
+    public int[] DepthFirstSearch(String origin, int[] marked) {
+        int origen = findVert(origin);
+        
+        if (origen < 0) {
+            JOptionPane.showMessageDialog(null, "That origin vertex doesn't exist");
+        }
+        
+        if (marked == null) {
+            marked = new int[getVertsNum()];
+            //Inicializa todos los vértices como "no marcados"
+            for (int i = 0; i < getVertsNum(); i++) {
+                marked[i] = -1;
+            }
+            marked[origen] = 0; //Marca el origen como "visitado"
+        } else {
+            for (int i = 0; i < marked.length; i++) {
+                if (marked[i] == marked[origen]) {
+                    marked[origen] = i - 1; //Marca el origen como "visitado"
+                    
+                }
+            }
+        }
+        System.out.println("Vértice " + getVerts()[origen].getData() + " visitado");
+        for (int i = 0; i < getVertsNum(); i++) {
+            if((getVert(origin).getNumber() != i) && (marked[i] < 0) && (archExist(getVert(origin), getVerts()[i])))
+                DepthFirstSearch(getVerts()[i].getName(), marked);
+        }
+//        
+//        for (int i = 0; i < marked.length; i++) {
+//            if (marked[i] == -1) {
+//                DepthFirstSearch(getVerts()[i].getName(), marked);
+//            }
+//        }
+        return marked;
+    }
    
 
     /**

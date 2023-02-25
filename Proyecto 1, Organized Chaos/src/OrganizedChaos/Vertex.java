@@ -62,6 +62,15 @@ public class Vertex {
         return null;
     }
     
+    public Product getProduct(String productName) {
+        for (int i = 0; i < stock.getSize(); i++) {
+            Product producto = (Product) stock.getElement(i);
+            if(productName.equals(producto.getName())) {
+                return producto;
+            }
+        }
+        return null;
+    }
     
     public boolean equals(Vertex ver) {
         return getName().equals(ver.getName());

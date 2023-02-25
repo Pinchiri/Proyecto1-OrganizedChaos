@@ -48,7 +48,7 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
 
         gestionar_label.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         gestionar_label.setText("GESTIONAR ALMACENES");
-        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 280, 50));
+        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 280, 50));
 
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +56,7 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 90, 30));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, 30));
 
         addArch.setText("Agregar un nuevo camino");
         addArch.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,7 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
                 addArchActionPerformed(evt);
             }
         });
-        jPanel1.add(addArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 200, 30));
+        jPanel1.add(addArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, 40));
 
         manageStock.setText("Gestionar Stock de un almacén");
         manageStock.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +72,7 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
                 manageStockActionPerformed(evt);
             }
         });
-        jPanel1.add(manageStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 200, 30));
+        jPanel1.add(manageStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 40));
 
         addWarehouse.setText("Agregar almacén");
         addWarehouse.addActionListener(new java.awt.event.ActionListener() {
@@ -80,9 +80,9 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
                 addWarehouseActionPerformed(evt);
             }
         });
-        jPanel1.add(addWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 200, 30));
+        jPanel1.add(addWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 200, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 470, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
