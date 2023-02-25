@@ -41,6 +41,8 @@ public class DisponibilityUI extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         dfs = new javax.swing.JButton();
         bfs = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -50,7 +52,7 @@ public class DisponibilityUI extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("REPORTE DE DISPONIBILIDAD");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 330, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 330, 50));
 
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +60,7 @@ public class DisponibilityUI extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 90, 30));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, 30));
 
         dfs.setText("Disponibilidad DFS");
         dfs.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +68,7 @@ public class DisponibilityUI extends javax.swing.JFrame {
                 dfsActionPerformed(evt);
             }
         });
-        jPanel1.add(dfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
+        jPanel1.add(dfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 140, 40));
 
         bfs.setText("Disponibilidad BFS");
         bfs.addActionListener(new java.awt.event.ActionListener() {
@@ -74,9 +76,15 @@ public class DisponibilityUI extends javax.swing.JFrame {
                 bfsActionPerformed(evt);
             }
         });
-        jPanel1.add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+        jPanel1.add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 420));
+        jLabel2.setText("Recorrido en profundidad");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 140, -1));
+
+        jLabel3.setText("Recorrido en anchura");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 140, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 480, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,6 +143,8 @@ public class DisponibilityUI extends javax.swing.JFrame {
     private javax.swing.JButton bfs;
     private javax.swing.JButton dfs;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
