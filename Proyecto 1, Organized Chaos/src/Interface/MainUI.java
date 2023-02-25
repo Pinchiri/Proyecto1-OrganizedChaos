@@ -74,6 +74,18 @@ public class MainUI extends javax.swing.JFrame {
         mainGraph.newArch("E", "A", 25);
         
         mainGraph.getVert("A").addProduct("Pantalla", 3);
+        mainGraph.getVert("A").addProduct("RAM", 2);
+        mainGraph.getVert("A").addProduct("Procesador", 1);
+        mainGraph.getVert("B").addProduct("Pantalla", 3);
+        mainGraph.getVert("B").addProduct("Grafica", 5);
+        mainGraph.getVert("C").addProduct("Placa", 7);
+        mainGraph.getVert("C").addProduct("Teclado", 8);
+        mainGraph.getVert("D").addProduct("Mouse", 2);
+        mainGraph.getVert("E").addProduct("Microfono", 7);
+        mainGraph.getVert("E").addProduct("Audifonos", 10);
+        
+        
+        
         
         
     }
@@ -151,7 +163,7 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_warehouseManageActionPerformed
 
     private void order1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order1ActionPerformed
-        OrderUI v2 = new OrderUI(this);
+        OrderUI v2 = new OrderUI(this,mainGraph);
         
     }//GEN-LAST:event_order1ActionPerformed
 

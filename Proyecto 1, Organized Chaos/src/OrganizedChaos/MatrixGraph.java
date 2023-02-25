@@ -203,9 +203,46 @@ public class MatrixGraph<T> {
         }
         return marked;
     }
+    public LinkedList<String> getProductNames(){
+        
+        LinkedList<String> productNames = new LinkedList();
+        LinkedList <Product> sVerts;
+        for (int i = 0; i < getVertsNum(); i++) {
+            sVerts = verts[i].getStock();
+            for(int j = 0; j < sVerts.getSize(); j++){
+                Product recent = sVerts.getElement(j);
+                if(!productNames.Includes(recent.getName())){
+                    productNames.addLast(recent.getName());
+                }
+            }
+        }
+        return productNames;
+        
+    }
     
-    
-   
+    public String totalProduct(LinkedList productNames){
+        LinkedList <Product> sVerts;
+        Nodo<String> recent1 = productNames.getHead();
+        String productTotal = "-";
+        while(recent1!=null){
+            String productName = recent1.getData();
+            
+            int total = 0;
+            for (int i = 0; i < getVertsNum(); i++) {
+                sVerts = verts[i].getStock();
+                for(int j = 0; j < sVerts.getSize(); j++){
+                    Product recent2 = sVerts.getElement(j);
+                    if (recent2.getName().equals(productName)){
+                       total += recent2.getQuantity();    
+                    }
+                }
+            }
+            productTotal += productName + "(" + total+ ")" + "\n"+ "-";    
+            System.out.println(productTotal);
+            recent1 = recent1.getNext();
+        }
+        return productTotal;
+        }
 
     /**
      * @return the vertsNum

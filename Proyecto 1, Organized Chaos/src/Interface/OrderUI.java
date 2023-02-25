@@ -5,6 +5,10 @@
  */
 package Interface;
 
+
+import OrganizedChaos.LinkedList;
+import OrganizedChaos.MatrixGraph;
+
 /**
  *
  * @author Rolando
@@ -12,18 +16,20 @@ package Interface;
 public class OrderUI extends javax.swing.JFrame {
     
     public static MainUI v1;
+    public static MatrixGraph mainGraph;
     /**
      * Creates new form OrderUI
      */
-    public OrderUI(MainUI v1) {
+    public OrderUI(MainUI v1, MatrixGraph mainGraph) {
         initComponents();
         this.v1 = v1;
         v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        
+        this.mainGraph = mainGraph;
+             
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,6 +42,16 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DisplayAllProducts = new javax.swing.JTextArea();
+        ProductInput = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        AmountInput = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        InputWarehouse = new javax.swing.JTextField();
+        DisplayProducts = new javax.swing.JButton();
+        ViewWareHouse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,6 +71,46 @@ public class OrderUI extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 90, 30));
 
+        DisplayAllProducts.setColumns(20);
+        DisplayAllProducts.setRows(5);
+        jScrollPane1.setViewportView(DisplayAllProducts);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 340, 130));
+
+        ProductInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProductInputActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ProductInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 240, -1));
+
+        jLabel2.setText("Ingrese un producto: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        jLabel3.setText("Ingrese una canitidad de productos:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        jPanel1.add(AmountInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 180, -1));
+
+        jLabel5.setText("Ingrese el nombre de un alamacen: ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        jPanel1.add(InputWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 140, -1));
+
+        DisplayProducts.setText("Mostrar productos");
+        DisplayProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisplayProductsActionPerformed(evt);
+            }
+        });
+        jPanel1.add(DisplayProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+
+        ViewWareHouse.setText("Ver Almacenes");
+        ViewWareHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewWareHouseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ViewWareHouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 420));
 
         pack();
@@ -64,6 +120,20 @@ public class OrderUI extends javax.swing.JFrame {
         this.setVisible(false);
         v1.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
+
+    private void ProductInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProductInputActionPerformed
+
+    private void DisplayProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayProductsActionPerformed
+       LinkedList<String> listProductNames = mainGraph.getProductNames();
+       String productNames = mainGraph.totalProduct(listProductNames);
+       DisplayAllProducts.setText(productNames);
+    }//GEN-LAST:event_DisplayProductsActionPerformed
+
+    private void ViewWareHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewWareHouseActionPerformed
+        mainGraph.printVerts();
+    }//GEN-LAST:event_ViewWareHouseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,14 +165,24 @@ public class OrderUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrderUI(v1).setVisible(true);
+                new OrderUI(v1, mainGraph).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AmountInput;
+    private javax.swing.JTextArea DisplayAllProducts;
+    private javax.swing.JButton DisplayProducts;
+    private javax.swing.JTextField InputWarehouse;
+    private javax.swing.JTextField ProductInput;
+    private javax.swing.JButton ViewWareHouse;
     private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
