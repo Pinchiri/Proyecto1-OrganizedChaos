@@ -237,7 +237,7 @@ public class MatrixGraph<T> {
                     }
                 }
             }
-            productTotal += productName + "(" + total+ ")" + "\n"+ "-";    
+            productTotal +="- "+ productName + " --- en stock -----> " + total+ "\n";    
             System.out.println(productTotal);
             recent1 = recent1.getNext();
         }
