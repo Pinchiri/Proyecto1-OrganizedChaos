@@ -5,13 +5,7 @@
  */
 package OrganizedChaos;
 
-import java.awt.Container;
-import java.awt.Dimension;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -213,7 +207,24 @@ public class MatrixGraph<T> {
         }
         return (T) marked;
     }
+    public LinkedList<String> getProductNames(){
+        
+        LinkedList<String> productNames = new LinkedList();
+        LinkedList <Product> sVerts;
+        for (int i = 0; i < getVertsNum(); i++) {
+            sVerts = verts[i].getStock();
+            for(int j = 0; j < sVerts.getSize(); j++){
+                Product recent = sVerts.getElement(j);
+                if(!productNames.Includes(recent.getName())){
+                    productNames.addLast(recent.getName());
+                }
+            }
+        }
+        return productNames;
+        
+    }
     
+
     public T DepthFirstSearch(String origin, int[] marked, boolean disponibility, String sDisponibility) {
         int origen = findVert(origin);
         System.out.println(origin);
@@ -267,6 +278,31 @@ public class MatrixGraph<T> {
         return (T) marked;
     }
    
+
+    public String totalProduct(LinkedList productNames){
+        LinkedList <Product> sVerts;
+        Nodo<String> recent1 = productNames.getHead();
+        String productTotal = "-";
+        while(recent1!=null){
+            String productName = recent1.getData();
+            
+            int total = 0;
+            for (int i = 0; i < getVertsNum(); i++) {
+                sVerts = verts[i].getStock();
+                for(int j = 0; j < sVerts.getSize(); j++){
+                    Product recent2 = sVerts.getElement(j);
+                    if (recent2.getName().equals(productName)){
+                       total += recent2.getQuantity();    
+                    }
+                }
+            }
+            productTotal +="- "+ productName + " --- en stock -----> " + total+ "\n";    
+            System.out.println(productTotal);
+            recent1 = recent1.getNext();
+        }
+        return productTotal;
+        }
+
 
     /**
      * @return the vertsNum

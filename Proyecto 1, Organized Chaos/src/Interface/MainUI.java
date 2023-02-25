@@ -73,20 +73,19 @@ public class MainUI extends javax.swing.JFrame {
         mainGraph.newArch("D", "E", 3);
         mainGraph.newArch("E", "A", 25);
         
-        mainGraph.getVerts()[0].addProduct("Pantalla", 3);
-        mainGraph.getVerts()[0].addProduct("RAM", 2);
-        mainGraph.getVerts()[0].addProduct("Procesador", 1);
+
+        mainGraph.getVert("A").addProduct("Pantalla", 3);
+        mainGraph.getVert("A").addProduct("RAM", 2);
+        mainGraph.getVert("A").addProduct("Procesador", 1);
+        mainGraph.getVert("B").addProduct("Pantalla", 3);
+        mainGraph.getVert("B").addProduct("Grafica", 5);
+        mainGraph.getVert("C").addProduct("Placa", 7);
+        mainGraph.getVert("C").addProduct("Teclado", 8);
+        mainGraph.getVert("D").addProduct("Mouse", 2);
+        mainGraph.getVert("E").addProduct("Microfono", 7);
+        mainGraph.getVert("E").addProduct("Audifonos", 10);
         
-        mainGraph.getVerts()[1].addProduct("Pantalla", 3);
-        mainGraph.getVerts()[1].addProduct("Grafica", 5);
-        
-        mainGraph.getVerts()[2].addProduct("Placa", 7);
-        mainGraph.getVerts()[2].addProduct("Teclado", 8);
-        
-        mainGraph.getVerts()[3].addProduct("Mouse", 2);
-        
-        mainGraph.getVerts()[4].addProduct("Microfono", 7);
-        mainGraph.getVerts()[4].addProduct("Audifonos", 10);
+       
         
     }
 

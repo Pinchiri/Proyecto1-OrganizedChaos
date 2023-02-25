@@ -269,6 +269,21 @@ public class LinkedList<T> {
         
     }
 
+    public boolean Includes(String name){
+        int start = 0;
+        Nodo<String> current = getHead();
+        while(start < getSize()  && current.getNext() != null){ 
+          if(name.equals(current.getData())){
+              return true;
+          }
+          current = current.getNext();
+        }
+        return false;
+    }
+    
+    
+    
+    
     //Getters and Setters
     public Nodo getHead() {
         return head;
