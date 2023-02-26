@@ -20,7 +20,9 @@ public class MatrixGraph<T> {
     private Vertex[] verts;
     private int [][] adjMatrix;
     
-    //Constructor
+    /**
+     * Constructor si no se indica la cantidad máxima de vértices
+     */
     public MatrixGraph() {
         this.maxVerts = 20;
         this.adjMatrix = new int[20][20];

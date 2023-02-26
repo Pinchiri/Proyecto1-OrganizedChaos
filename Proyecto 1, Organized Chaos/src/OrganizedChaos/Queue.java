@@ -44,7 +44,11 @@ public class Queue<T> {
         return head == null;
     }
     
-    
+    /**
+     * Agrega un nodo a la cola
+     * @param data (Información a agregar)
+     * @return Nodo agregado
+     */
     public Nodo add(T data){
         Nodo node = new Nodo(data);
         if (isEmpty()) {
@@ -59,7 +63,10 @@ public class Queue<T> {
         return node;
     }
     
-    
+    /**
+     * Desencola un Nodo pero retorna el Nodo eliminado
+     * @return Nodo desencolado
+     */
     public T dispatch(){
         if (!isEmpty()){
             Nodo pointer = getHead();
@@ -74,7 +81,9 @@ public class Queue<T> {
         return null;
     }
     
-    
+    /**
+     * Desencola un Nodo
+     */
     public void remove(){
         if (!isEmpty()){
             Nodo pointer = getHead();
@@ -87,7 +96,9 @@ public class Queue<T> {
         }
     }
     
-    
+    /**
+     * Imprime la cola
+     */
     public void printQueue(){
         Nodo pointer = getHead();
         String sQueue = "";

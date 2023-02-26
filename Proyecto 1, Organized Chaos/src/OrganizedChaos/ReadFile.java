@@ -17,10 +17,11 @@ import javax.swing.JOptionPane;
  * @author Rolando Sorrentino
  */
 public class ReadFile {
-    
-    public ReadFile() {
-        
-    }
+   
+    /**
+     * Crea y actualiza el archivo de texto dentro del proyecto que actúa como una 'base de datos' para guardar la información cargada en anteriores ejecuciones
+     * @param txt (String que contiene la información del archivo de texto leído)
+     */
     public void writeTxt(String txt) {
         try {
             PrintWriter pw = new PrintWriter("test\\amazon.txt");
@@ -33,6 +34,11 @@ public class ReadFile {
         }
     }
     
+    /**
+     * Lee un archivo de texto línea por línea y lo convierte en un string
+     * @param path (Dirección donde se encuentra el archivo de texto a leer)
+     * @return String que contiene la información del archivo de texto
+     */
     public String readTxt(String path) {
         String line;
         String txt = "";
@@ -66,7 +72,12 @@ public class ReadFile {
         return null;
     }
     
-
+    /**
+     * Desglosa un archivo de texto para obtener y agregar los vértices (almacenes) del grafo
+     * @param txt ((String que contiene la información del archivo de texto leído)
+     * @param graph (Grafo al cual se le agregará la informacion, en este caso el grafo de programa)
+     * @return El Grafo
+     */
     public MatrixGraph readVerts(String txt, MatrixGraph graph) {
         try {
             if (!"".equals(txt)) {
@@ -102,6 +113,12 @@ public class ReadFile {
         return graph;
     }
     
+    /**
+     * Desglosa un archivo de texto para obtener y agregar los caminos al grafo
+     * @param txt ((String que contiene la información del archivo de texto leído)
+     * @param graph (Grafo al cual se le agregará la informacion, en este caso el grafo de programa)
+     * @return El Grafo
+     */
     public MatrixGraph readArchs(String txt, MatrixGraph graph) {
         try {
             if (!"".equals(txt)) {
