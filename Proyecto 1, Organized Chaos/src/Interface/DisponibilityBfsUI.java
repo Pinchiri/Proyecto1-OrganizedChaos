@@ -6,7 +6,6 @@
 package Interface;
 
 import static Interface.MainUI.mainGraph;
-import OrganizedChaos.Vertex;
 
 /**
  *
@@ -48,6 +47,7 @@ public class DisponibilityBfsUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
