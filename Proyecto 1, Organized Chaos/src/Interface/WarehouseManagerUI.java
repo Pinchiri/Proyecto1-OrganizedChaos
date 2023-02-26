@@ -44,12 +44,17 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gestionar_label.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        gestionar_label.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        gestionar_label.setForeground(new java.awt.Color(255, 255, 153));
         gestionar_label.setText("GESTIONAR ALMACENES");
-        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 280, 50));
+        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 320, 50));
 
+        back.setBackground(new java.awt.Color(204, 255, 255));
+        back.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        back.setForeground(new java.awt.Color(51, 51, 51));
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,29 +63,38 @@ public class WarehouseManagerUI extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, 30));
 
+        addArch.setBackground(new java.awt.Color(255, 255, 153));
+        addArch.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        addArch.setForeground(new java.awt.Color(51, 51, 51));
         addArch.setText("Agregar un nuevo camino");
         addArch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addArchActionPerformed(evt);
             }
         });
-        jPanel1.add(addArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, 40));
+        jPanel1.add(addArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 230, 50));
 
+        manageStock.setBackground(new java.awt.Color(255, 255, 153));
+        manageStock.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        manageStock.setForeground(new java.awt.Color(51, 51, 51));
         manageStock.setText("Gestionar Stock de un almacén");
         manageStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStockActionPerformed(evt);
             }
         });
-        jPanel1.add(manageStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 40));
+        jPanel1.add(manageStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 230, 50));
 
+        addWarehouse.setBackground(new java.awt.Color(255, 255, 153));
+        addWarehouse.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        addWarehouse.setForeground(new java.awt.Color(51, 51, 51));
         addWarehouse.setText("Agregar almacén");
         addWarehouse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addWarehouseActionPerformed(evt);
             }
         });
-        jPanel1.add(addWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 200, 40));
+        jPanel1.add(addWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 230, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 470, 380));
 

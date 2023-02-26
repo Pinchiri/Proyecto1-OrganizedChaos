@@ -57,24 +57,35 @@ public class JFileChooser extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextArea1.setBackground(new java.awt.Color(102, 102, 102));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jTextArea1.setText("Instrucciones:\n -  Seleccione el boton Abrir para buscar un archivo de texto y \ncargarlo");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 350, -1));
 
+        txtArea.setBackground(new java.awt.Color(102, 102, 102));
         txtArea.setColumns(20);
+        txtArea.setForeground(new java.awt.Color(255, 255, 255));
         txtArea.setRows(5);
         jScrollPane2.setViewportView(txtArea);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 350, -1));
 
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 153));
         jLabel2.setText("Texto cargado: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 120, -1));
 
+        open.setBackground(new java.awt.Color(255, 255, 153));
+        open.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        open.setForeground(new java.awt.Color(51, 51, 51));
         open.setText("Abrir");
         open.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,17 +94,21 @@ public class JFileChooser extends javax.swing.JFrame {
         });
         jPanel1.add(open, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 80, 30));
 
+        back.setBackground(new java.awt.Color(204, 255, 255));
+        back.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        back.setForeground(new java.awt.Color(51, 51, 51));
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 322, 80, 30));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
         jLabel1.setText("CARGAR UN ARCHIVO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 250, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 290, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 370));
 

@@ -48,12 +48,17 @@ public class DisponibilityUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
         jLabel1.setText("REPORTE DE DISPONIBILIDAD");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 330, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 370, 50));
 
+        back.setBackground(new java.awt.Color(204, 255, 255));
+        back.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        back.setForeground(new java.awt.Color(51, 51, 51));
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,27 +67,37 @@ public class DisponibilityUI extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, 30));
 
+        dfs.setBackground(new java.awt.Color(255, 255, 153));
+        dfs.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        dfs.setForeground(new java.awt.Color(51, 51, 51));
         dfs.setText("Disponibilidad DFS");
         dfs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dfsActionPerformed(evt);
             }
         });
-        jPanel1.add(dfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 140, 40));
+        jPanel1.add(dfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 160, 40));
 
+        bfs.setBackground(new java.awt.Color(255, 255, 153));
+        bfs.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        bfs.setForeground(new java.awt.Color(51, 51, 51));
         bfs.setText("Disponibilidad BFS");
         bfs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bfsActionPerformed(evt);
             }
         });
-        jPanel1.add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 40));
+        jPanel1.add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 160, 40));
 
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 153));
         jLabel2.setText("Recorrido en profundidad");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 140, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
 
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 153));
         jLabel3.setText("Recorrido en anchura");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 140, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 160, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 480, 380));
 
