@@ -189,27 +189,32 @@ public class OrderUI extends javax.swing.JFrame {
 
     private void FinishOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishOrderActionPerformed
         LinkedList<Product> totalOrder = new LinkedList();
-        String [] orderProducts = Products.getText().split(",");
-        String [] sOrderAmounts = Amounts.getText().split(",");
-        int [] orderAmounts = new int[sOrderAmounts.length];
-        if(orderProducts.length == sOrderAmounts.length){
+        try {
+            String [] orderProducts = Products.getText().split(",");
+            String [] sOrderAmounts = Amounts.getText().split(",");
+            int [] orderAmounts = new int[sOrderAmounts.length];
+            if(orderProducts.length == sOrderAmounts.length){
             for(int i = 0; i < orderProducts.length; i++){
-            orderAmounts [i] =  Integer.parseInt(sOrderAmounts[i]);
-            Product order = new Product(orderProducts[i],orderAmounts[i]);
-            totalOrder.addLast(order);
+                orderAmounts[i] =  Integer.parseInt(sOrderAmounts[i]);
+                Product order = new Product(orderProducts[i],orderAmounts[i]);
+                totalOrder.addLast(order);
             }
             
             if(mainGraph.isVertex(InputWarehouse.getText(), mainGraph.getVerts())){
-            mainGraph.getVert(InputWarehouse.getText()).setStock(totalOrder.discount(mainGraph.getVert(InputWarehouse.getText()).getStock()));
+                mainGraph.getVert(InputWarehouse.getText()).setStock(totalOrder.discount(mainGraph.getVert(InputWarehouse.getText()).getStock()));
             
-            JOptionPane.showMessageDialog(rootPane, "Su orden se ha realizado exitosamente!");
+                JOptionPane.showMessageDialog(null, "Su orden se ha realizado exitosamente!");
             
             }
         }
         
         else{
-            JOptionPane.showMessageDialog(rootPane, "Faltan cantidades por asignar a los productos");
+            JOptionPane.showMessageDialog(null, "Faltan cantidades por asignar a los productos");
         }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Se ha producido un error: " + e);
+        }
+        
         
         
     }//GEN-LAST:event_FinishOrderActionPerformed

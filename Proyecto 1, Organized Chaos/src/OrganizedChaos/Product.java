@@ -5,6 +5,8 @@
  */
 package OrganizedChaos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rolando
@@ -33,6 +35,13 @@ public class Product {
         this.quantity = 1;
     }
     
+    public void discount(int quantity) {
+        if (!(quantity > getQuantity())) {
+            setQuantity(getQuantity() - quantity);
+        } else {
+            JOptionPane.showMessageDialog(null, "La cantidad a descontar es mayor que la que se posee en existencia");
+        }
+    }
     
     //Getters and Setters
     public String getName() {

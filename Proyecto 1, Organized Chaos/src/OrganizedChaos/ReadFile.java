@@ -9,6 +9,7 @@ import static Interface.MainUI.mainGraph;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
@@ -22,9 +23,22 @@ public class ReadFile {
      * Crea y actualiza el archivo de texto dentro del proyecto que actúa como una 'base de datos' para guardar la información cargada en anteriores ejecuciones
      * @param txt (String que contiene la información del archivo de texto leído)
      */
-    public void writeTxt(String txt) {
+    public void printTxt(String txt) {
         try {
+            File file = new File("test\\amazon.txt");
             PrintWriter pw = new PrintWriter("test\\amazon.txt");
+            pw.print(txt);
+            JOptionPane.showMessageDialog(null, "Se ha agregado esta información a la base de datos!");
+            pw.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e);
+        }
+    }
+    
+    public void appendTxt(String txt) {
+        try {
+            File file = new File("test\\amazon.txt");
+            PrintWriter pw = new PrintWriter(new FileWriter(file, true));
             pw.append(txt);
             pw.close();
             JOptionPane.showMessageDialog(null, "Se ha agregado esta información a la base de datos!");
@@ -32,6 +46,42 @@ public class ReadFile {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + e);
         }
+    }
+    
+    public void updateVerts(MatrixGraph graph) {
+        String warehouses = "~" + "\n";
+        
+        for (int i = 0; i < graph.getVertsNum(); i++) {
+            Vertex vert = graph.getVerts()[i];
+            warehouses += "Almacen " + vert.getName() + ":" + "\n";
+            for (int j = 0; j < vert.getStock().getSize(); j++) {
+                Product product = (Product) vert.getStock().getElement(j);
+                if (j == (vert.getStock().getSize() - 1)) {
+                    warehouses += product.getName() + "," + Integer.toString(product.getQuantity()) + ";" + "\n";
+                } else {
+                    warehouses += product.getName() + "," + Integer.toString(product.getQuantity()) + "\n";
+                }
+            }
+        }
+        printTxt(warehouses);
+
+    }
+    
+    public void updateArchs(MatrixGraph graph) {
+        String archs = "~" + "\n";
+        
+        for (int i = 0; i < graph.getAdjMatrix().length; i++) {
+            for (int j = 0; j < graph.getAdjMatrix()[i].length; j++) {
+                if(graph.getAdjMatrix()[i][j] > 0) {
+                    if ((i == graph.getAdjMatrix().length - 1) && (j == graph.getAdjMatrix()[i].length)) {
+                        archs += graph.getVerts()[i].getName() + "," + graph.getVerts()[j].getName() + "," + graph.getAdjMatrix()[i][j];
+                    } else {
+                        archs += graph.getVerts()[i].getName() + "," + graph.getVerts()[j].getName() + "," + graph.getAdjMatrix()[i][j] + "\n";
+                    } 
+                }
+            }
+        }
+        appendTxt(archs);
     }
     
     /**

@@ -10,6 +10,7 @@ import OrganizedChaos.ReadFile;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,7 +26,6 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
  * @author Rolando
  */
 public class MainUI extends javax.swing.JFrame {
-    
     
     public static MatrixGraph mainGraph = new MatrixGraph();
     
@@ -69,8 +69,8 @@ public class MainUI extends javax.swing.JFrame {
         try {
             String path = "test\\amazon.txt";
             String txt = nfile.readTxt(path);
-            
-            if (!txt.isBlank()) {
+            File file = new File(path);
+            if (!txt.isBlank() || !file.exists()) {
                     nfile.readVerts(txt, mainGraph);
                     nfile.readArchs(txt, mainGraph);
                     JOptionPane.showMessageDialog(null, "Se ha leído la base de datos exitosamente!");  
@@ -94,11 +94,13 @@ public class MainUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         addFile = new javax.swing.JButton();
-        warehouseManage = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
         order1 = new javax.swing.JButton();
         disponibility = new javax.swing.JButton();
         Amazon = new javax.swing.JLabel();
         showGraph1 = new javax.swing.JButton();
+        warehouseManage = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -119,16 +121,16 @@ public class MainUI extends javax.swing.JFrame {
         });
         jPanel1.add(addFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, 50));
 
-        warehouseManage.setBackground(new java.awt.Color(255, 255, 153));
-        warehouseManage.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
-        warehouseManage.setForeground(new java.awt.Color(51, 51, 51));
-        warehouseManage.setText("Gestión de almacenes");
-        warehouseManage.addActionListener(new java.awt.event.ActionListener() {
+        exit.setBackground(new java.awt.Color(255, 51, 51));
+        exit.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        exit.setForeground(new java.awt.Color(51, 51, 51));
+        exit.setText("Salir del programa");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                warehouseManageActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
-        jPanel1.add(warehouseManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 190, 40));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 150, 40));
 
         order1.setBackground(new java.awt.Color(255, 255, 153));
         order1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
@@ -168,15 +170,42 @@ public class MainUI extends javax.swing.JFrame {
         });
         jPanel1.add(showGraph1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 190, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 460));
+        warehouseManage.setBackground(new java.awt.Color(255, 255, 153));
+        warehouseManage.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        warehouseManage.setForeground(new java.awt.Color(51, 51, 51));
+        warehouseManage.setText("Gestión de almacenes");
+        warehouseManage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                warehouseManageActionPerformed(evt);
+            }
+        });
+        jPanel1.add(warehouseManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 190, 40));
+
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel1.setText("(Guarda la información actual)");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 210, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void warehouseManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseManageActionPerformed
-        WarehouseManagerUI v3 = new WarehouseManagerUI(this);
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        try {
+            ReadFile nfile = new ReadFile();
+            nfile.updateVerts(mainGraph);
+            nfile.updateArchs(mainGraph);
+
+            System.exit(0);
+            
+            
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Se ha producido un error: " + e);
+        }
+       
         
-    }//GEN-LAST:event_warehouseManageActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
 
     private void order1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order1ActionPerformed
         OrderUI v2 = new OrderUI(this);
@@ -215,6 +244,10 @@ public class MainUI extends javax.swing.JFrame {
     private void disponibilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibilityActionPerformed
         DisponibilityUI disponibility = new DisponibilityUI(this);
     }//GEN-LAST:event_disponibilityActionPerformed
+
+    private void warehouseManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseManageActionPerformed
+        WarehouseManagerUI warehouseManager = new WarehouseManagerUI(this);
+    }//GEN-LAST:event_warehouseManageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +289,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel Amazon;
     private javax.swing.JButton addFile;
     private javax.swing.JButton disponibility;
+    private javax.swing.JButton exit;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton order1;
     private javax.swing.JButton showGraph1;

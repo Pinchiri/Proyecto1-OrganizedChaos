@@ -142,7 +142,7 @@ public class JFileChooser extends javax.swing.JFrame {
                 txtArea.setText(txt);
                 nfile.readVerts(txt, mainGraph);
                 nfile.readArchs(txt, mainGraph);
-                nfile.writeTxt(txt);
+                nfile.printTxt(txt);
                 JOptionPane.showMessageDialog(null, "Cargado exitoso"); 
             }
         } catch(Exception e) {
