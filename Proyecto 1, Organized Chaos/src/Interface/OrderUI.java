@@ -8,6 +8,7 @@ package Interface;
 
 import OrganizedChaos.LinkedList;
 import OrganizedChaos.MatrixGraph;
+import static Interface.MainUI.mainGraph;
 import OrganizedChaos.Product;
 import javax.swing.JOptionPane;
 import OrganizedChaos.Vertex;
@@ -19,17 +20,16 @@ import OrganizedChaos.Vertex;
 public class OrderUI extends javax.swing.JFrame {
     
     public static MainUI v1;
-    public static MatrixGraph mainGraph;
     /**
      * Creates new form OrderUI
+     * @param v1 (Ventana Main)
      */
-    public OrderUI(MainUI v1, MatrixGraph mainGraph) {
+    public OrderUI(MainUI v1) {
         initComponents();
         this.v1 = v1;
         v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        this.mainGraph = mainGraph;
              
     }
     
@@ -210,7 +210,7 @@ public class OrderUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrderUI(v1, mainGraph).setVisible(true);
+                new OrderUI(v1).setVisible(true);
             }
         });
     }

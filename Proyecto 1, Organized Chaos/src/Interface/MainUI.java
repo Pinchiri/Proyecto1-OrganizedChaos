@@ -163,7 +163,7 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_warehouseManageActionPerformed
 
     private void order1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order1ActionPerformed
-        OrderUI v2 = new OrderUI(this,mainGraph);
+        OrderUI v2 = new OrderUI(this);
         
     }//GEN-LAST:event_order1ActionPerformed
 
