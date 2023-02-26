@@ -10,6 +10,7 @@ import OrganizedChaos.LinkedList;
 import static Interface.MainUI.mainGraph;
 import OrganizedChaos.Product;
 import javax.swing.JOptionPane;
+import OrganizedChaos.Vertex;
 
 /**
  *
@@ -162,9 +163,14 @@ public class OrderUI extends javax.swing.JFrame {
             Product order = new Product(orderProducts[i],orderAmounts[i]);
             totalOrder.addLast(order);
             }
+            
+            if(mainGraph.isVertex(InputWarehouse.getText(), mainGraph.getVerts())){
+            mainGraph.getVert(InputWarehouse.getText()).setStock(totalOrder.discount(mainGraph.getVert(InputWarehouse.getText()).getStock()));
+            
+            JOptionPane.showMessageDialog(rootPane, "Su orden se ha realizado exitosamente!");
+            
+            }
         }
-        
-        
         
         else{
             JOptionPane.showMessageDialog(rootPane, "Faltan cantidades por asignar a los productos");
