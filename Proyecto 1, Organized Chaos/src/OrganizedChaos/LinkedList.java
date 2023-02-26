@@ -18,7 +18,9 @@ public class LinkedList<T> {
     private Nodo<T> tail;
     private int size;
 
-    //Constructor
+    /**
+     * Constructor
+     */
     public LinkedList() {
         this.head = null;
         this.tail = null;
@@ -26,7 +28,7 @@ public class LinkedList<T> {
 
     }
     /**
-     * 
+     * Constructor si se indica el primer Nodo
      * @param node 
      */
     public LinkedList(Nodo<T> node) {
@@ -324,6 +326,11 @@ public class LinkedList<T> {
         
     }
 
+    /**
+     * Determina si en la lista se encuentra un elemento con el nombre indicado
+     * @param name (Nombre del elemento)
+     * @return Booleano; "true" si existe el elemento; "false si no existe
+     */
     public boolean Includes(String name){
         int start = 0;
         Nodo<String> current = getHead();
@@ -336,6 +343,11 @@ public class LinkedList<T> {
         return false;
     }
     
+    /**
+     * Busca y obtiene el producto deseado
+     * @param myProduct (Producto deseado)
+     * @return Producto si lo encuentra, sino devuelve "null"
+     */
     public Product getProduct(Product myProduct){
         int start = 0;
         Nodo<Product> current = getHead();
@@ -348,6 +360,11 @@ public class LinkedList<T> {
         return null;
     }
     
+    /**
+     * Descuenta una cantidad de un producto deseado
+     * @param stock (Lista de inventario del almacén)
+     * @return Inventario del almacén
+     */
     public LinkedList discount(LinkedList stock){
         
         Nodo<Product> current = this.getHead();
@@ -367,9 +384,7 @@ public class LinkedList<T> {
         return stock;
     }
     
-     
-    
-     
+
     //Getters and Setters
     public Nodo getHead() {
         return head;

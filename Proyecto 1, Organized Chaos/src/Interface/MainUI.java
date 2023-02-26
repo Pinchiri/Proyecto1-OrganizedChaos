@@ -63,6 +63,7 @@ public class MainUI extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
+        //Lectura del archivo de texto de la base de datos
         ReadFile nfile = new ReadFile();
         
         try {
@@ -80,34 +81,6 @@ public class MainUI extends javax.swing.JFrame {
         }catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e);
         }      
-                
-//        mainGraph.newVert("A");
-//        mainGraph.newVert("B");
-//        mainGraph.newVert("C");
-//        mainGraph.newVert("D");
-//        mainGraph.newVert("E");
-//        
-//        mainGraph.newArch("A", "B", 10);
-//        mainGraph.newArch("A", "C", 20);
-//        mainGraph.newArch("B", "C", 5);
-//        mainGraph.newArch("B", "D", 8);
-//        mainGraph.newArch("C", "D", 4);
-//        mainGraph.newArch("C", "E", 13);
-//        mainGraph.newArch("D", "E", 3);
-//        mainGraph.newArch("E", "A", 25);
-//        
-//
-//        mainGraph.getVert("A").addProduct("Pantalla", 3);
-//        mainGraph.getVert("A").addProduct("RAM", 2);
-//        mainGraph.getVert("A").addProduct("Procesador", 1);
-//        mainGraph.getVert("B").addProduct("Pantalla", 3);
-//        mainGraph.getVert("B").addProduct("Grafica", 5);
-//        mainGraph.getVert("C").addProduct("Placa", 7);
-//        mainGraph.getVert("C").addProduct("Teclado", 8);
-//        mainGraph.getVert("D").addProduct("Mouse", 2);
-//        mainGraph.getVert("E").addProduct("Microfono", 7);
-//        mainGraph.getVert("E").addProduct("Audifonos", 10);
-    
     }
 
     /**
