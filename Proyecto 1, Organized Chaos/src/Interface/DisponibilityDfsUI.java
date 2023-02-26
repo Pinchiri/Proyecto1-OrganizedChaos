@@ -17,6 +17,7 @@ public class DisponibilityDfsUI extends javax.swing.JFrame {
     public static DisponibilityUI disponibility;
     /**
      * Creates new form OrderUI
+     * @param disponibility (Ventana anterior del Reporte de Disponibilidad)
      */
     public DisponibilityDfsUI(DisponibilityUI disponibility) {
         initComponents();
@@ -50,7 +51,7 @@ public class DisponibilityDfsUI extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("REPORTE DE DISPONIBILIDAD (BFS)");
+        jLabel1.setText("REPORTE DE DISPONIBILIDAD (DFS)");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 390, 50));
 
         back.setText("Volver");
@@ -89,9 +90,9 @@ public class DisponibilityDfsUI extends javax.swing.JFrame {
         String origin = mainGraph.getVerts()[0].getName();
         int[] marked = null;
         String sDisponibility = "";
-        String sDisponibilityFinal = "";
         
-        sDisponibility += (String) mainGraph.DepthFirstSearch(origin, marked, true, sDisponibility);
+        
+        sDisponibility += mainGraph.DepthFirstSearch(origin, marked);
         allStock.setText(sDisponibility);
     }//GEN-LAST:event_jButton1ActionPerformed
 

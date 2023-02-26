@@ -17,6 +17,7 @@ public class DisponibilityBfsUI extends javax.swing.JFrame {
     public static DisponibilityUI disponibility;
     /**
      * Creates new form OrderUI
+     * @param disponibility (Ventana anterior del Reporte de Disponibilidad)
      */
     public DisponibilityBfsUI(DisponibilityUI disponibility) {
         initComponents();

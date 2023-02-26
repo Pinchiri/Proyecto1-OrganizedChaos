@@ -19,6 +19,7 @@ public class MatrixGraph<T> {
     private Vertex[] verts;
     private int [][] adjMatrix;
     
+    //Constructor
     public MatrixGraph() {
         this.maxVerts = 20;
         this.adjMatrix = new int[20][20];
@@ -31,6 +32,10 @@ public class MatrixGraph<T> {
         this.vertsNum = 0;
     }
     
+    /**
+     * Constructor si se indica la cantidad máxima de vertices en el grafo
+     * @param size 
+     */
     public MatrixGraph(int size) {
         
         this.adjMatrix = new int[size][size];
@@ -41,6 +46,7 @@ public class MatrixGraph<T> {
             }
         }
         this.vertsNum = 0;
+        this.maxVerts = size;
     }
     
     /**
@@ -109,9 +115,16 @@ public class MatrixGraph<T> {
         this.adjMatrix[number1][number2] = distance;
     }
     
+    /**
+    * Imprime los vértices del grafo
+     * @param vert1 (Vertice origen del camino)
+     * @param vert2 (Vertice destino del camino)
+     * @return Booleano; "true" si existe un camino con el origen y destino parametrizados, "false" si no existe el camino
+    */
     public boolean archExist(Vertex vert1, Vertex vert2) {
         return getAdjMatrix()[vert1.getNumber()][vert2.getNumber()] != 0;
     }
+    
     /**
     * Imprime los vértices del grafo
     */
@@ -140,9 +153,10 @@ public class MatrixGraph<T> {
         JOptionPane.showMessageDialog(null, sMatrix);
     }
     /**
-    * Imprime la matriz con las relaciones de distancia entre los almacenes en sus posiciones [i][j]
+    * Recorrido del grafo en anchura
      * @param origin (Vértice desde el cual se quiere comenzar el recorrido)
      * @param marked (Arreglo de vértices ya marcados)
+     * @param disponibility (Booleano, si es true indica que debe ser utilizado para el reporte de disponibilidad con sus modificaciones pertinentes; si es false corre el método sin modificaciones)
      * @return El arreglo de vértices marcados que ya fueron visitados
     */
     public T BreadthFirstSearch(String origin, int[] marked, boolean disponibility) {
@@ -179,8 +193,7 @@ public class MatrixGraph<T> {
             if (disponibility == true) {
                     
                     Vertex vert = getVerts()[w];
-                    sDisponibility += vert.printStock();
-                    sDisponibility += "\n";
+                    sDisponibility += vert.printStock() + "\n";
                 }
             
             System.out.println("Vértice " + getVerts()[w].getData() + " visitado");
@@ -207,6 +220,11 @@ public class MatrixGraph<T> {
         }
         return (T) marked;
     }
+    
+    /**
+    * Método para obtener los nombres de los productos de cada almacén del grafo
+     * @return Una lista con dichos nombres
+    */
     public LinkedList<String> getProductNames(){
         
         LinkedList<String> productNames = new LinkedList();
@@ -223,15 +241,20 @@ public class MatrixGraph<T> {
         return productNames;
         
     }
-    
 
-    public T DepthFirstSearch(String origin, int[] marked, boolean disponibility, String sDisponibility) {
+  /**
+    * Recorrido del grafo en profundidad
+     * @param origin (Vértice desde el cual se quiere comenzar el recorrido)
+     * @param marked (Arreglo de vértices ya marcados)
+     * @return String con el stock de cada almacen desglosado
+    */
+    public String DepthFirstSearch(String origin, int[] marked) {
+        String sDisponibility = "";
         int origen = findVert(origin);
-        System.out.println(origin);
         if (origen < 0) {
             JOptionPane.showMessageDialog(null, "That origin vertex doesn't exist");
         }
-        
+
         if (marked == null) {
             marked = new int[getVertsNum()];
             //Inicializa todos los vértices como "no marcados"
@@ -239,46 +262,37 @@ public class MatrixGraph<T> {
                 marked[i] = -1;
             }
             marked[origen] = 0; //Marca el origen como "visitado"
-       
+           
         } else {
             for (int i = 0; i < marked.length; i++) {
                 if (marked[i] == marked[origen]) {
                     marked[origen] = i - 1; //Marca el origen como "visitado"
-                    
+               
+                    }
                 }
             }
-        }
-        
         Vertex actual = getVert(origin);
-        sDisponibility += actual.printStock();
+        sDisponibility += actual.printStock() + "\n";
         System.out.println("Vértice " + getVerts()[origen].getData() + " visitado");
-        
+
         for (int i = 0; i < getVertsNum(); i++) {
                 
             if((getVert(origin).getNumber() != i) && (marked[i] < 0) && (archExist(getVert(origin), getVerts()[i]))) {
                 
-                DepthFirstSearch(getVerts()[i].getName(), marked, disponibility, sDisponibility); 
+                sDisponibility += DepthFirstSearch(getVerts()[i].getName(), marked); 
             }
                 
-        }
+        }    
+     
+        return sDisponibility;
         
-        if (disponibility == true) {
-            return (T) sDisponibility;
-        }
-         
-        
-        
-        
-//        
-//        for (int i = 0; i < marked.length; i++) {
-//            if (marked[i] == -1) {
-//                DepthFirstSearch(getVerts()[i].getName(), marked);
-//            }
-//        }
-        return (T) marked;
     }
    
-
+    /**
+    * Recorrido del grafo en profundidad
+     * @param productNames (Lista de nombres de todos los productos del grafo)
+     * @return String desglosado con todos los productos existentes en el grafo junto con sus cantidades totales
+    */
     public String totalProduct(LinkedList productNames){
         LinkedList <Product> sVerts;
         Nodo<String> recent1 = productNames.getHead();

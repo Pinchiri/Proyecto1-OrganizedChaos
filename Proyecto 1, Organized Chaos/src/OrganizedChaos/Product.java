@@ -14,12 +14,20 @@ public class Product {
     private String name;
     private int quantity;
     
+    /**
+     * Constructor
+     * @param name (Nombre del Producto)
+     * @param quantity (Cantidad del producto)
+     */
     public Product(String name, int quantity) {
         this.name = name;
         this.quantity = quantity;
         
     }
-    
+    /**
+     * Constructor
+     * @param name (Nombre del Producto)
+     */
     public Product(String name) {
         this.name = name;
         this.quantity = 1;

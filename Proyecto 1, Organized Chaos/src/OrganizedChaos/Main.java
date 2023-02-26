@@ -41,7 +41,7 @@ public class Main {
         int[] marked = null;
         graph.BreadthFirstSearch("D", marked, false);
         System.out.println("\n");
-        graph.DepthFirstSearch("D", marked, false, "");
+        graph.DepthFirstSearch("D", marked);
     }
     
 }

@@ -5,11 +5,16 @@ public class Nodo<T> {
     private Nodo next;
     private Nodo previous;
 
+    /**
+     * 
+     * @param data
+     */
     public Nodo(T data) {
         this.data = data;
         this.next = null;
     }
 
+    //Getters and Setters
     public T getData() {
         return data;
     }

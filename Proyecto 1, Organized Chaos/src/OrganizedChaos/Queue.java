@@ -6,12 +6,15 @@ public class Queue<T> {
     private Nodo<T> head, tail;
     private int size;
 
+    //Constructor
     public Queue() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
-
+    
+    
+    //Getters and Setters
     public Nodo getHead() {
         return head;
     }

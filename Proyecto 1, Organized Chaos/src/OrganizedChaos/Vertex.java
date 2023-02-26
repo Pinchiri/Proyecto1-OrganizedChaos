@@ -42,6 +42,8 @@ public class Vertex {
         
         if (stock.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El inventario de este Almacén está vacío");
+            String sStock = "Inventario de " + getName() + "\n" + "(VACÍO)";
+            return sStock;
 
         } else {
             String sStock = "Inventario de " + getName() + "\n" + "- ";
@@ -59,7 +61,6 @@ public class Vertex {
             return sStock;
 
         }
-        return null;
     }
     
     public Product getProduct(String productName) {

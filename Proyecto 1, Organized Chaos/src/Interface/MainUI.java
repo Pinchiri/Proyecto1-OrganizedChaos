@@ -27,7 +27,10 @@ public class MainUI extends javax.swing.JFrame {
     
     public static MatrixGraph mainGraph = new MatrixGraph();
     
-    
+    /**
+     * Muestra el grafo en un JFrame aparte
+     * @param graph (Grafo de la librería GraphStream)
+     */
     private void displayGraph(Graph graph) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

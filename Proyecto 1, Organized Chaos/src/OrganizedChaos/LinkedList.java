@@ -24,16 +24,28 @@ public class LinkedList<T> {
         this.size = 0;
 
     }
-
+    /**
+     * 
+     * @param node 
+     */
     public LinkedList(Nodo<T> node) {
         this.head = this.tail = node;
         size++;
     }
-
+    
+    /**
+     * 
+     * @return Booleano; "true" si la lista está vacía, "false" si posee al menos un elemento
+     */
     public boolean isEmpty() {
         return head == null;
     }
 
+    /**
+     * Inserta un elemento al principio de la Lista
+     * @param element (Elemento a agregar)
+     * @return Nodo que se agregó
+     */
     public Nodo<T> addFirst(T element) {
         Nodo<T> node = new Nodo(element);
 
@@ -50,6 +62,11 @@ public class LinkedList<T> {
         return node;
     }
 
+    /**
+     * Inserta un elemento al final de la Lista
+     * @param element (Elemento a agregar)
+     * @return Nodo que se agregó
+     */
     public Nodo<T> addLast(T element) {
         Nodo<T> node = new Nodo(element);
 
@@ -68,14 +85,12 @@ public class LinkedList<T> {
         return node;
     }
 
-    public Nodo getTail() {
-        return tail;
-    }
-
-    public void setTail(Nodo<T> tail) {
-        this.tail = tail;
-    }
-
+    /**
+     * Inserta un elemento en el índice indicado de la Lista
+     * @param index (Índice en el que se quiere agregar)
+     * @param element (Elemento a agregar)
+     * @return Nodo que se agregó
+     */
     public Nodo<T> addInIndex(int index, T element) {
         Nodo<T> node = new Nodo(element);
 
@@ -105,6 +120,10 @@ public class LinkedList<T> {
         return node;
     }
 
+    /**
+     * Elimina el primer elemento de la Lista
+     * @return Nodo eliminado
+     */
     public Nodo<T> deleteFirst() {
 
         if (!isEmpty()) {
@@ -120,6 +139,10 @@ public class LinkedList<T> {
         return null;
     }
 
+    /**
+     * Elimina el último elemento de la Lista
+     * @return Nodo eliminado
+     */
     public Nodo<T> deleteLast() {
 
         if (!isEmpty()) {
@@ -149,6 +172,11 @@ public class LinkedList<T> {
 
     }
 
+    /**
+     * Elimina el elemento de la Lista que se encuentra en el índice indicado
+     * @param index (Índice del elemento que se desea eliminar)
+     * @return Nodo eliminado
+     */
     public Nodo<T> deleteInIndex(int index) {
         if (!isEmpty()) {
             Nodo<T> pointer = getHead();
@@ -173,6 +201,9 @@ public class LinkedList<T> {
 
     }
 
+    /**
+     * Imprime la lista
+     */
     public void printList() {
 
         if (isEmpty()) {
@@ -196,6 +227,11 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Obtiene el elemento de la Lista que se encuentra en el índice indicado
+     * @param index (Índice del elemento que se desea obtener)
+     * @return 
+     */
     public T getElement(int index) {
         if (isEmpty()) {
             return null;
@@ -212,6 +248,12 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Busca el nodo central de una Lista
+     * @param head (Cabeza de una lista)
+     * @param tail (Cola de una lista
+     * @return Nodo central
+     */
     public Nodo middleNode(Nodo head, Nodo tail) {
         Nodo slow = head;
         Nodo fast = head;
@@ -223,6 +265,12 @@ public class LinkedList<T> {
         return slow;
     }
 
+    /**
+     * Une dos listas dadas en orden ascendente
+     * @param l1 
+     * @param l2
+     * @return Lista ordenada ascendentemente
+     */
     public LinkedList merge(LinkedList l1, LinkedList l2) {
         Nodo one = l1.getHead();
         Nodo two = l2.getHead();
@@ -252,6 +300,12 @@ public class LinkedList<T> {
         return merged;
     }
 
+    /**
+     * Ordena una lista utilizando mergeSort ascendentemente
+     * @param head
+     * @param tail
+     * @return 
+     */
     public LinkedList mergeSort(Nodo head, Nodo tail) {
         if (head == tail) {
             LinkedList br = new LinkedList();
@@ -300,5 +354,12 @@ public class LinkedList<T> {
     public void setSize(int size) {
         this.size = size;
     }
+ 
+    public Nodo getTail() {
+        return tail;
+    }
 
+    public void setTail(Nodo<T> tail) {
+        this.tail = tail;
+    }
 }
