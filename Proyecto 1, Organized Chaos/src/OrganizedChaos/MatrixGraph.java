@@ -5,6 +5,7 @@
  */
 package OrganizedChaos;
 
+
 import javax.swing.JOptionPane;
 
 /**
@@ -243,6 +244,27 @@ public class MatrixGraph<T> {
         }
         return productTotal;
         }
+    
+    public boolean isVertex (String warehouse, Vertex [] vWarehouses){
+       
+      
+       String [] sWarehouses = new String[vWarehouses.length];
+       
+       for(int i = 0; i < vWarehouses.length; i++){
+          if(vWarehouses[i]!=null){
+          sWarehouses[i] = vWarehouses[i].getName();  
+          }
+       }
+       
+        for (String sWarehouse : sWarehouses) {
+            if (warehouse.equals(sWarehouse)) {
+                return true;
+            }
+        }
+       return false;
+        
+        
+    }
 
     /**
      * @return the vertsNum

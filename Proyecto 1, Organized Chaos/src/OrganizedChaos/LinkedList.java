@@ -4,6 +4,7 @@
  */
 package OrganizedChaos;
 
+
 import javax.swing.JOptionPane;
 
 /**
@@ -281,9 +282,40 @@ public class LinkedList<T> {
         return false;
     }
     
+    public Product getProduct(Product myProduct){
+        int start = 0;
+        Nodo<Product> current = getHead();
+        while(start < getSize()  && current.getNext() != null){ 
+          if(myProduct == current.getData()){
+              return current.getData();
+          }
+          current = current.getNext();
+        }
+        return null;
+    }
     
+    public LinkedList discount(LinkedList stock){
+        
+        Nodo<Product> current = this.getHead();
+        while(current != null) {  
+            for(int i = 0; i<this.getSize(); i++){
+                 if(stock.Includes(current.getData().getName())){
+                 stock.getProduct(current.getData()).setQuantity(stock.getProduct(current.getData()).getQuantity()-current.getData().getQuantity());
+                    
+                 }
+                 else{
+                     // Dijsktra 
+                 }
+               
+             current = current.getNext();
+            }
+        }
+        return stock;
+    }
     
+     
     
+     
     //Getters and Setters
     public Nodo getHead() {
         return head;

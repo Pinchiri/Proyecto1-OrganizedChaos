@@ -84,7 +84,7 @@ public class MainUI extends javax.swing.JFrame {
         mainGraph.getVert("E").addProduct("Microfono", 7);
         mainGraph.getVert("E").addProduct("Audifonos", 10);
         
-        
+       
         
         
         
