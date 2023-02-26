@@ -10,9 +10,6 @@ import OrganizedChaos.ReadFile;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
