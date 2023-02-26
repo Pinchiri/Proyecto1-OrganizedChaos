@@ -4,12 +4,18 @@
  */
 package Interface;
 
+import static Interface.MainUI.mainGraph;
+import OrganizedChaos.ReadFile;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -112,7 +118,7 @@ public class JFileChooser extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         areaDeTexto = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        open1 = new javax.swing.JButton();
+        open = new javax.swing.JButton();
         save = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
@@ -141,13 +147,13 @@ public class JFileChooser extends javax.swing.JFrame {
         jLabel2.setText("Texto a guardar: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        open1.setText("Abrir");
-        open1.addActionListener(new java.awt.event.ActionListener() {
+        open.setText("Abrir");
+        open.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                open1ActionPerformed(evt);
+                openActionPerformed(evt);
             }
         });
-        jPanel1.add(open1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
+        jPanel1.add(open, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
 
         save.setText("Guardar");
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -179,9 +185,51 @@ public class JFileChooser extends javax.swing.JFrame {
         this.guardarArchivo();
     }//GEN-LAST:event_saveActionPerformed
 
-    private void open1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_open1ActionPerformed
+    private void openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openActionPerformed
+        javax.swing.JFileChooser jfc = new javax.swing.JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        jfc.setDialogTitle("Selecciona un archivo de texto (.txt)");
+        jfc.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT", "txt");
+        jfc.addChoosableFileFilter(filter);
+
+        int returnValue = jfc.showOpenDialog(null);
+        
+        if (returnValue == javax.swing.JFileChooser.APPROVE_OPTION) {
+            String auxpath = jfc.getSelectedFile().getPath();
+            System.out.println(jfc.getSelectedFile().getPath());
+            
+            //Empezamos a leer el archivo cargado
+            StringBuilder sb = new StringBuilder();
+            String txt = "";
+            
+            try ( BufferedReader br = Files.newBufferedReader(Paths.get(auxpath))) {
+
+                //Lectura linea por linea
+                String line;
+
+                while ((line = br.readLine()) != null) {
+
+                    if (!line.isEmpty()) {
+                        if (line.contains("Almacenes") || line.contains("Rutas")) {
+                            txt += "~" + "\n";
+                        } else {
+                            txt += line + "\n";   
+                        }  
+                    }
+
+                }   
+            br.close();    
+            ReadFile nfile = new ReadFile();
+            
+            nfile.readVerts(txt, mainGraph);
+            nfile.readArchs(txt, mainGraph);
+            JOptionPane.showMessageDialog(null, "Lectura exitosa");
+            } catch (IOException ex) {
+                System.err.format("IOException: %s%n", ex);
+            }
+        }
+        
+    }//GEN-LAST:event_openActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,7 +275,7 @@ public class JFileChooser extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton open1;
+    private javax.swing.JButton open;
     private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
 }
