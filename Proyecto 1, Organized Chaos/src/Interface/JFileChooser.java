@@ -139,17 +139,41 @@ public class JFileChooser extends javax.swing.JFrame {
 
                 String txt = nfile.readTxt(auxpath);
 
-                txtArea.setText(txt);
+                
                 nfile.readVerts(txt, mainGraph);
                 nfile.readArchs(txt, mainGraph);
-                nfile.printTxt(txt);
+                
+                String[] split = txt.split("~");
+                
+                String[] txtSplitWarehouses = split[1].split("\n");
+                String[] txtSplitRoutes = split[2].split("\n");
+                String normal = "";
+                
+                for (int i = 0; i < txtSplitWarehouses.length; i++) {
+                    System.out.println(txtSplitWarehouses[i]);
+                    if(txtSplitWarehouses[i].equals("")) {
+                       normal += "Almacenes;" + "\n"; 
+                    }  else {
+                       normal += txtSplitWarehouses[i] + "\n"; 
+                    }
+                }
+                System.out.println("");
+                for (int i = 0; i < txtSplitRoutes.length; i++) {
+                    System.out.println(txtSplitRoutes[i]);
+                    if(txtSplitRoutes[i].equals("")) {
+                       normal += "Rutas;" + "\n";
+                    }  else {
+                       normal += txtSplitRoutes[i] + "\n"; 
+                    }
+                    
+                }
+                txtArea.setText(normal);
+                nfile.printTxt(normal);
                 JOptionPane.showMessageDialog(null, "Cargado exitoso"); 
             }
         } catch(Exception e) {
                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el cargado del archivo: " + e);
-            }
-        
-        
+            }  
     }//GEN-LAST:event_openActionPerformed
 
     /**

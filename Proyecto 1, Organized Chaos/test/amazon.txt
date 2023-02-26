@@ -1,4 +1,4 @@
-~
+Almacenes;
 Almacen A:
 Pantalla,3
 RAM,2
@@ -14,7 +14,7 @@ Mouse,2;
 Almacen E:
 Microfono,7
 Audifonos,10;
-~
+Rutas;
 A,B,10
 A,C,20
 B,C,5

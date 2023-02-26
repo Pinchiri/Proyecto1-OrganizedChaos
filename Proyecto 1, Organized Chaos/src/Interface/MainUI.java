@@ -70,7 +70,7 @@ public class MainUI extends javax.swing.JFrame {
             String path = "test\\amazon.txt";
             String txt = nfile.readTxt(path);
             File file = new File(path);
-            if (!txt.isBlank() || !file.exists()) {
+            if (!txt.isBlank()) {
                     nfile.readVerts(txt, mainGraph);
                     nfile.readArchs(txt, mainGraph);
                     JOptionPane.showMessageDialog(null, "Se ha leído la base de datos exitosamente!");  
@@ -196,7 +196,7 @@ public class MainUI extends javax.swing.JFrame {
             ReadFile nfile = new ReadFile();
             nfile.updateVerts(mainGraph);
             nfile.updateArchs(mainGraph);
-
+            JOptionPane.showMessageDialog(null, "Se ha guardado toda la información correctamente! Hasta luego!");
             System.exit(0);
             
             

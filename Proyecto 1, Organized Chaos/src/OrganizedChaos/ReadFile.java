@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class ReadFile {
    
     /**
-     * Crea y actualiza el archivo de texto dentro del proyecto que actúa como una 'base de datos' para guardar la información cargada en anteriores ejecuciones
+     * Sobreescribe el archivo de texto dentro del proyecto
      * @param txt (String que contiene la información del archivo de texto leído)
      */
     public void printTxt(String txt) {
@@ -35,6 +35,10 @@ public class ReadFile {
         }
     }
     
+    /**
+     * Agrega información al archivo de texto del proyecto
+     * @param txt 
+     */
     public void appendTxt(String txt) {
         try {
             File file = new File("test\\amazon.txt");
@@ -48,8 +52,12 @@ public class ReadFile {
         }
     }
     
+    /**
+     * Extrae la información de los almacenes del Grafo dentro del programa y sobreescribe el archivo de texto
+     * @param graph 
+     */
     public void updateVerts(MatrixGraph graph) {
-        String warehouses = "~" + "\n";
+        String warehouses = "Almacenes;" + "\n";
         
         for (int i = 0; i < graph.getVertsNum(); i++) {
             Vertex vert = graph.getVerts()[i];
@@ -67,8 +75,12 @@ public class ReadFile {
 
     }
     
+    /**
+     * Extrae la información caminos del Grafo dentro del programa y se agrega al archivo de texto
+     * @param graph 
+     */
     public void updateArchs(MatrixGraph graph) {
-        String archs = "~" + "\n";
+        String archs = "Rutas;" + "\n";
         
         for (int i = 0; i < graph.getAdjMatrix().length; i++) {
             for (int j = 0; j < graph.getAdjMatrix()[i].length; j++) {
