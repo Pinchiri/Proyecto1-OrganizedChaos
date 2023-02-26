@@ -50,12 +50,17 @@ public class newArchUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gestionar_label.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        gestionar_label.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        gestionar_label.setForeground(new java.awt.Color(255, 255, 153));
         gestionar_label.setText("AGREGAR CAMINO A ALMACENES EXISTENTES");
-        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 510, 50));
+        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 590, 50));
 
+        destiny.setBackground(new java.awt.Color(102, 102, 102));
+        destiny.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        destiny.setForeground(new java.awt.Color(255, 255, 255));
         destiny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destinyActionPerformed(evt);
@@ -63,17 +68,25 @@ public class newArchUI extends javax.swing.JFrame {
         });
         jPanel1.add(destiny, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 260, 30));
 
+        Hola2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        Hola2.setForeground(new java.awt.Color(255, 255, 153));
         Hola2.setText("Nombre del almacén destino");
-        jPanel1.add(Hola2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, 20));
+        jPanel1.add(Hola2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 210, 20));
 
+        addArch.setBackground(new java.awt.Color(255, 255, 153));
+        addArch.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        addArch.setForeground(new java.awt.Color(51, 51, 51));
         addArch.setText("Añadir camino");
         addArch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addArchActionPerformed(evt);
             }
         });
-        jPanel1.add(addArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 130, 40));
+        jPanel1.add(addArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 140, 50));
 
+        origin.setBackground(new java.awt.Color(102, 102, 102));
+        origin.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin.setForeground(new java.awt.Color(255, 255, 255));
         origin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 originActionPerformed(evt);
@@ -81,12 +94,19 @@ public class newArchUI extends javax.swing.JFrame {
         });
         jPanel1.add(origin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 260, 30));
 
+        origin_label1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin_label1.setForeground(new java.awt.Color(255, 255, 153));
         origin_label1.setText("Nombre del almacén origen");
-        jPanel1.add(origin_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 170, 20));
+        jPanel1.add(origin_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 200, 20));
 
+        origin_label2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin_label2.setForeground(new java.awt.Color(255, 255, 153));
         origin_label2.setText("Distancia entre los dos almacenes");
-        jPanel1.add(origin_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 210, 20));
+        jPanel1.add(origin_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 220, 20));
 
+        value.setBackground(new java.awt.Color(102, 102, 102));
+        value.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        value.setForeground(new java.awt.Color(255, 255, 255));
         value.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valueActionPerformed(evt);
@@ -94,6 +114,9 @@ public class newArchUI extends javax.swing.JFrame {
         });
         jPanel1.add(value, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 180, 30));
 
+        back.setBackground(new java.awt.Color(204, 255, 255));
+        back.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        back.setForeground(new java.awt.Color(51, 51, 51));
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

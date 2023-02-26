@@ -10,9 +10,6 @@ import OrganizedChaos.ReadFile;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -134,51 +131,69 @@ public class MainUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        addFile.setBackground(new java.awt.Color(255, 255, 153));
+        addFile.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        addFile.setForeground(new java.awt.Color(51, 51, 51));
         addFile.setText("Agregar un archivo (.txt)");
         addFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addFileActionPerformed(evt);
             }
         });
-        jPanel1.add(addFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, 50));
+        jPanel1.add(addFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, 50));
 
+        warehouseManage.setBackground(new java.awt.Color(255, 255, 153));
+        warehouseManage.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        warehouseManage.setForeground(new java.awt.Color(51, 51, 51));
         warehouseManage.setText("Gestión de almacenes");
         warehouseManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 warehouseManageActionPerformed(evt);
             }
         });
-        jPanel1.add(warehouseManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 190, 40));
+        jPanel1.add(warehouseManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 190, 40));
 
+        order1.setBackground(new java.awt.Color(255, 255, 153));
+        order1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        order1.setForeground(new java.awt.Color(51, 51, 51));
         order1.setText("Realizar un pedido");
         order1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 order1ActionPerformed(evt);
             }
         });
-        jPanel1.add(order1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 170, 40));
+        jPanel1.add(order1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 190, 40));
 
+        disponibility.setBackground(new java.awt.Color(255, 255, 153));
+        disponibility.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        disponibility.setForeground(new java.awt.Color(51, 51, 51));
         disponibility.setText("Reporte de disponibilidad");
         disponibility.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disponibilityActionPerformed(evt);
             }
         });
-        jPanel1.add(disponibility, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 170, 40));
+        jPanel1.add(disponibility, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 190, 40));
 
-        Amazon.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Amazon.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
+        Amazon.setForeground(new java.awt.Color(255, 255, 153));
         Amazon.setText("AMAZON");
-        jPanel1.add(Amazon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 110, 50));
+        jPanel1.add(Amazon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 190, 60));
 
+        showGraph1.setBackground(new java.awt.Color(255, 255, 153));
+        showGraph1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        showGraph1.setForeground(new java.awt.Color(51, 51, 51));
         showGraph1.setText("Mostrar grafo");
         showGraph1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showGraph1ActionPerformed(evt);
             }
         });
-        jPanel1.add(showGraph1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 170, 40));
+        jPanel1.add(showGraph1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 190, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 460));
 

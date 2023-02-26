@@ -63,76 +63,111 @@ public class OrderUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
         jLabel1.setText("REALIZAR PEDIDO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 50));
 
+        back.setBackground(new java.awt.Color(204, 255, 255));
+        back.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        back.setForeground(new java.awt.Color(51, 51, 51));
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 90, 30));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 90, 30));
 
+        DisplayAllProducts.setBackground(new java.awt.Color(102, 102, 102));
         DisplayAllProducts.setColumns(20);
+        DisplayAllProducts.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        DisplayAllProducts.setForeground(new java.awt.Color(255, 255, 255));
         DisplayAllProducts.setRows(5);
         jScrollPane1.setViewportView(DisplayAllProducts);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 320, 60));
 
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 153));
         jLabel2.setText("Ingrese una lista de productos: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 200, -1));
 
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 153));
         jLabel3.setText("Ingrese una canitidad para cada producto:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 220, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 270, -1));
 
-        jLabel5.setText("Ingrese el nombre de un alamacen: ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
-        jPanel1.add(InputWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 140, -1));
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel5.setText("Ingrese el nombre de un almacén: ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
 
+        InputWarehouse.setBackground(new java.awt.Color(102, 102, 102));
+        InputWarehouse.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        InputWarehouse.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(InputWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 190, 30));
+
+        DisplayProducts.setBackground(new java.awt.Color(255, 255, 153));
+        DisplayProducts.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        DisplayProducts.setForeground(new java.awt.Color(51, 51, 51));
         DisplayProducts.setText("Mostrar productos");
         DisplayProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DisplayProductsActionPerformed(evt);
             }
         });
-        jPanel1.add(DisplayProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
+        jPanel1.add(DisplayProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 73, 150, 30));
 
+        ViewWareHouse.setBackground(new java.awt.Color(255, 255, 153));
+        ViewWareHouse.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        ViewWareHouse.setForeground(new java.awt.Color(51, 51, 51));
         ViewWareHouse.setText("Ver Almacenes");
         ViewWareHouse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewWareHouseActionPerformed(evt);
             }
         });
-        jPanel1.add(ViewWareHouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
+        jPanel1.add(ViewWareHouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, -1, 30));
 
+        Products.setBackground(new java.awt.Color(102, 102, 102));
         Products.setColumns(20);
+        Products.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        Products.setForeground(new java.awt.Color(255, 255, 255));
         Products.setRows(5);
         jScrollPane2.setViewportView(Products);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 270, 60));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 270, 60));
 
+        Amounts.setBackground(new java.awt.Color(102, 102, 102));
         Amounts.setColumns(20);
+        Amounts.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        Amounts.setForeground(new java.awt.Color(255, 255, 255));
         Amounts.setRows(5);
         jScrollPane3.setViewportView(Amounts);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 270, 60));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 270, 60));
 
-        jLabel4.setText("Ingrese una lista de productos y otra de sus cantidades correspondientes, separando cada uno solo con comas.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel4.setText("Ingrese una lista de productos y otra de sus cantidades correspondientes, separando cada uno solo con comas");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 710, -1));
 
+        FinishOrder.setBackground(new java.awt.Color(255, 255, 153));
+        FinishOrder.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        FinishOrder.setForeground(new java.awt.Color(51, 51, 51));
         FinishOrder.setText("Culminar pedido");
         FinishOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FinishOrderActionPerformed(evt);
             }
         });
-        jPanel1.add(FinishOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
+        jPanel1.add(FinishOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 170, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 600, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 780, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

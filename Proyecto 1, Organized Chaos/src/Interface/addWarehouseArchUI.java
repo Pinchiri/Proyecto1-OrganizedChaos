@@ -55,12 +55,17 @@ public class addWarehouseArchUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gestionar_label.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        gestionar_label.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        gestionar_label.setForeground(new java.awt.Color(255, 255, 153));
         gestionar_label.setText("AGREGAR CAMINOS DEL ALMACÉN");
-        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 390, 50));
+        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 450, 50));
 
+        destiny.setBackground(new java.awt.Color(102, 102, 102));
+        destiny.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        destiny.setForeground(new java.awt.Color(255, 255, 255));
         destiny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destinyActionPerformed(evt);
@@ -68,20 +73,30 @@ public class addWarehouseArchUI extends javax.swing.JFrame {
         });
         jPanel1.add(destiny, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, 30));
 
+        Hola2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        Hola2.setForeground(new java.awt.Color(255, 255, 153));
         Hola2.setText("Nombre del almacén al que llegará el agregado");
-        jPanel1.add(Hola2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 360, 50));
+        jPanel1.add(Hola2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 370, 50));
 
+        addArches.setBackground(new java.awt.Color(255, 255, 153));
+        addArches.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        addArches.setForeground(new java.awt.Color(51, 51, 51));
         addArches.setText("Añadir caminos");
         addArches.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addArchesActionPerformed(evt);
             }
         });
-        jPanel1.add(addArches, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 130, 40));
+        jPanel1.add(addArches, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 130, 40));
 
+        origin_label.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin_label.setForeground(new java.awt.Color(255, 255, 153));
         origin_label.setText("Distancia entre el almacén agregado y el existente");
         jPanel1.add(origin_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 390, 50));
 
+        destinyValue.setBackground(new java.awt.Color(102, 102, 102));
+        destinyValue.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        destinyValue.setForeground(new java.awt.Color(255, 255, 255));
         destinyValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destinyValueActionPerformed(evt);
@@ -89,6 +104,9 @@ public class addWarehouseArchUI extends javax.swing.JFrame {
         });
         jPanel1.add(destinyValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, 30));
 
+        origin.setBackground(new java.awt.Color(102, 102, 102));
+        origin.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin.setForeground(new java.awt.Color(255, 255, 255));
         origin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 originActionPerformed(evt);
@@ -96,12 +114,19 @@ public class addWarehouseArchUI extends javax.swing.JFrame {
         });
         jPanel1.add(origin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 30));
 
+        origin_label1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin_label1.setForeground(new java.awt.Color(255, 255, 153));
         origin_label1.setText("Nombre del almacén que llegará al agregado");
-        jPanel1.add(origin_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 250, 50));
+        jPanel1.add(origin_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 340, 50));
 
+        origin_label2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        origin_label2.setForeground(new java.awt.Color(255, 255, 153));
         origin_label2.setText("Distancia entre el almacén existente y el agregado");
-        jPanel1.add(origin_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 280, 50));
+        jPanel1.add(origin_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 350, 50));
 
+        originValue.setBackground(new java.awt.Color(102, 102, 102));
+        originValue.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        originValue.setForeground(new java.awt.Color(255, 255, 255));
         originValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 originValueActionPerformed(evt);

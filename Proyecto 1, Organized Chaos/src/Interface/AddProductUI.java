@@ -59,12 +59,17 @@ public class AddProductUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gestionar_label.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        gestionar_label.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 22)); // NOI18N
+        gestionar_label.setForeground(new java.awt.Color(255, 255, 153));
         gestionar_label.setText("DEL ALMACÉN");
-        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 170, 30));
+        jPanel1.add(gestionar_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 240, 30));
 
+        back.setBackground(new java.awt.Color(204, 255, 255));
+        back.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        back.setForeground(new java.awt.Color(51, 51, 51));
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +78,9 @@ public class AddProductUI extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 90, 30));
 
+        quantityToAdd.setBackground(new java.awt.Color(102, 102, 102));
+        quantityToAdd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        quantityToAdd.setForeground(new java.awt.Color(255, 255, 255));
         quantityToAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityToAddActionPerformed(evt);
@@ -80,9 +88,14 @@ public class AddProductUI extends javax.swing.JFrame {
         });
         jPanel1.add(quantityToAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 220, 30));
 
+        EnterName_label.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        EnterName_label.setForeground(new java.awt.Color(255, 255, 153));
         EnterName_label.setText(" existente en el inventario)");
-        jPanel1.add(EnterName_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 150, 20));
+        jPanel1.add(EnterName_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 220, 20));
 
+        addProduct.setBackground(new java.awt.Color(255, 255, 153));
+        addProduct.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        addProduct.setForeground(new java.awt.Color(51, 51, 51));
         addProduct.setText("Añadir");
         addProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,10 +104,14 @@ public class AddProductUI extends javax.swing.JFrame {
         });
         jPanel1.add(addProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 100, 40));
 
-        gestionar_label1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        gestionar_label1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 22)); // NOI18N
+        gestionar_label1.setForeground(new java.awt.Color(255, 255, 153));
         gestionar_label1.setText("AÑADIR A UN PRODUCTO EXISTENTE");
-        jPanel1.add(gestionar_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 410, 40));
+        jPanel1.add(gestionar_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 480, 40));
 
+        productName.setBackground(new java.awt.Color(102, 102, 102));
+        productName.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        productName.setForeground(new java.awt.Color(255, 255, 255));
         productName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productNameActionPerformed(evt);
@@ -102,14 +119,20 @@ public class AddProductUI extends javax.swing.JFrame {
         });
         jPanel1.add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 220, 30));
 
+        EnterName_label1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        EnterName_label1.setForeground(new java.awt.Color(255, 255, 153));
         EnterName_label1.setText("Introduzca el nombre del producto");
-        jPanel1.add(EnterName_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
+        jPanel1.add(EnterName_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 230, -1));
 
+        EnterName_label2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        EnterName_label2.setForeground(new java.awt.Color(255, 255, 153));
         EnterName_label2.setText("Introduzca la cantidad a aumentar");
-        jPanel1.add(EnterName_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 200, -1));
+        jPanel1.add(EnterName_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 240, -1));
 
+        EnterName_label3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        EnterName_label3.setForeground(new java.awt.Color(255, 255, 153));
         EnterName_label3.setText("(Esta cantidad se sumará a la cantidad");
-        jPanel1.add(EnterName_label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 220, -1));
+        jPanel1.add(EnterName_label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 250, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 500, 370));
 
