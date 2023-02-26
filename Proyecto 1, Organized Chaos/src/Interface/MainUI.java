@@ -6,11 +6,16 @@
 package Interface;
 
 import OrganizedChaos.MatrixGraph;
+import OrganizedChaos.ReadFile;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.MultiGraph;
@@ -61,6 +66,24 @@ public class MainUI extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
+        ReadFile nfile = new ReadFile();
+        
+        try {
+            String path = "test\\amazon.txt";
+            String txt = nfile.readTxt(path);
+            
+            if (!txt.isBlank()) {
+                    nfile.readVerts(txt, mainGraph);
+                    nfile.readArchs(txt, mainGraph);
+                    JOptionPane.showMessageDialog(null, "Se ha leído la base de datos exitosamente!");  
+                } else {
+                JOptionPane.showMessageDialog(null, "La base de datos se encuentra vacía. Cargue un archivo para agregar información!"); 
+                }
+            
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e);
+        }      
+                
 //        mainGraph.newVert("A");
 //        mainGraph.newVert("B");
 //        mainGraph.newVert("C");

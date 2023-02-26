@@ -7,9 +7,6 @@ package Interface;
 import static Interface.MainUI.mainGraph;
 import OrganizedChaos.ReadFile;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,6 +23,7 @@ public class JFileChooser extends javax.swing.JFrame {
     public static MainUI v1;
     /**
      * Creates new form JFileChooser
+     * @param v1 (Ventana principal)
      */
     public JFileChooser(MainUI v1) {
         initComponents();
@@ -35,72 +33,6 @@ public class JFileChooser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
-       
-    // Abrir archvo  
-  private String openFile(){
-   String aux= "";   
-   String text="";
-  try
-  {
-   
-   javax.swing.JFileChooser file=new javax.swing.JFileChooser();
-   file.showOpenDialog(this);
-   /**abrimos el archivo seleccionado*/
-   File opens=file.getSelectedFile();
-
-   /**recorremos el archivo, lo leemos para plasmarlo
-   *en el area de texto*/
-   if(opens!=null)
-   {     
-      FileReader fr=new FileReader(opens);
-      BufferedReader br =new BufferedReader(fr);
-      while((aux=br.readLine())!=null)
-      {
-         text+= aux+ "\n";
-      }
-         br.close();
-    }    
-   }
-   catch(IOException ex)
-   {
-     JOptionPane.showMessageDialog(null,ex+"" +
-           "\nNo se ha encontrado el archivo",
-                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-    }
-      return text;
-    }
-  
-  //Guardar Archivo
-  
-    private void guardarArchivo() {
- try
- {
-  String nombre="";
-  javax.swing.JFileChooser file=new javax.swing.JFileChooser();
-  file.showSaveDialog(this);
-  File guarda =file.getSelectedFile();
-
-  if(guarda !=null)
-  {
-   /*guardamos el archivo y le damos el formato directamente,
-    * si queremos que se guarde en formato doc lo definimos como .doc*/
-    FileWriter save =new FileWriter(guarda+".txt");
-    save.write(areaDeTexto.getText());
-    save.close();
-    JOptionPane.showMessageDialog(null,
-         "El archivo se ha guardado Exitosamente",
-             "Información",JOptionPane.INFORMATION_MESSAGE);
-    }
- }
-  catch(IOException ex)
-  {
-   JOptionPane.showMessageDialog(null,
-        "Su archivo no se ha guardado",
-           "Advertencia",JOptionPane.WARNING_MESSAGE);
-  }
- }
-    
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,15 +44,14 @@ public class JFileChooser extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        areaDeTexto = new javax.swing.JTextArea();
+        txtArea = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         open = new javax.swing.JButton();
-        save = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -128,23 +59,20 @@ public class JFileChooser extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Componente JFileChooser");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Instrucciones:\n -  Seleccione el boton Abrir para buscar archivos de texto por \ndirectorio. \n- Seleccione el boton Guardar para guadar el texto en el directorio \ndeseado.");
+        jTextArea1.setText("Instrucciones:\n -  Seleccione el boton Abrir para buscar un archivo de texto y \ncargarlo");
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 350, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 350, -1));
 
-        areaDeTexto.setColumns(20);
-        areaDeTexto.setRows(5);
-        jScrollPane2.setViewportView(areaDeTexto);
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        jScrollPane2.setViewportView(txtArea);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 350, -1));
 
-        jLabel2.setText("Texto a guardar: ");
+        jLabel2.setText("Texto cargado: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         open.setText("Abrir");
@@ -153,15 +81,7 @@ public class JFileChooser extends javax.swing.JFrame {
                 openActionPerformed(evt);
             }
         });
-        jPanel1.add(open, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
-
-        save.setText("Guardar");
-        save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
-            }
-        });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        jPanel1.add(open, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 80, 30));
 
         back.setText("Volver");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +90,10 @@ public class JFileChooser extends javax.swing.JFrame {
             }
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("CARGAR UN ARCHIVO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 250, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 370));
 
@@ -181,53 +105,35 @@ public class JFileChooser extends javax.swing.JFrame {
         v1.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
-    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        this.guardarArchivo();
-    }//GEN-LAST:event_saveActionPerformed
-
     private void openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openActionPerformed
-        javax.swing.JFileChooser jfc = new javax.swing.JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        jfc.setDialogTitle("Selecciona un archivo de texto (.txt)");
-        jfc.setAcceptAllFileFilterUsed(false);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT", "txt");
-        jfc.addChoosableFileFilter(filter);
+        try {
+            javax.swing.JFileChooser jfc = new javax.swing.JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            jfc.setDialogTitle("Selecciona un archivo de texto (.txt)");
+            jfc.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT", "txt");
+            jfc.addChoosableFileFilter(filter);
 
-        int returnValue = jfc.showOpenDialog(null);
-        
-        if (returnValue == javax.swing.JFileChooser.APPROVE_OPTION) {
-            String auxpath = jfc.getSelectedFile().getPath();
-            System.out.println(jfc.getSelectedFile().getPath());
-            
-            //Empezamos a leer el archivo cargado
-            StringBuilder sb = new StringBuilder();
-            String txt = "";
-            
-            try ( BufferedReader br = Files.newBufferedReader(Paths.get(auxpath))) {
+            int returnValue = jfc.showOpenDialog(null);
 
-                //Lectura linea por linea
-                String line;
+            if (returnValue == javax.swing.JFileChooser.APPROVE_OPTION) {
 
-                while ((line = br.readLine()) != null) {
+               String auxpath = jfc.getSelectedFile().getPath();
+                System.out.println(jfc.getSelectedFile().getPath());
 
-                    if (!line.isEmpty()) {
-                        if (line.contains("Almacenes") || line.contains("Rutas")) {
-                            txt += "~" + "\n";
-                        } else {
-                            txt += line + "\n";   
-                        }  
-                    }
+                ReadFile nfile = new ReadFile();
 
-                }   
-            br.close();    
-            ReadFile nfile = new ReadFile();
-            
-            nfile.readVerts(txt, mainGraph);
-            nfile.readArchs(txt, mainGraph);
-            JOptionPane.showMessageDialog(null, "Lectura exitosa");
-            } catch (IOException ex) {
-                System.err.format("IOException: %s%n", ex);
+                String txt = nfile.readTxt(auxpath);
+
+                txtArea.setText(txt);
+                nfile.readVerts(txt, mainGraph);
+                nfile.readArchs(txt, mainGraph);
+                nfile.writeTxt(txt);
+                JOptionPane.showMessageDialog(null, "Cargado exitoso"); 
             }
-        }
+        } catch(Exception e) {
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el cargado del archivo: " + e);
+            }
+        
         
     }//GEN-LAST:event_openActionPerformed
 
@@ -267,7 +173,6 @@ public class JFileChooser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaDeTexto;
     private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -276,6 +181,6 @@ public class JFileChooser extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton open;
-    private javax.swing.JButton save;
+    private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
 }
