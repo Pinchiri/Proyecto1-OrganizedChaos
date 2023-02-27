@@ -55,8 +55,9 @@ public class ReadFile {
     /**
      * Extrae la información de los almacenes del Grafo dentro del programa y sobreescribe el archivo de texto
      * @param graph 
+     * @return  String
      */
-    public void updateVerts(MatrixGraph graph) {
+    public String updateVerts(MatrixGraph graph) {
         String warehouses = "Almacenes;" + "\n";
         
         for (int i = 0; i < graph.getVertsNum(); i++) {
@@ -71,15 +72,17 @@ public class ReadFile {
                 }
             }
         }
-        printTxt(warehouses);
+        return warehouses;
+//        printTxt(warehouses);
 
     }
     
     /**
      * Extrae la información caminos del Grafo dentro del programa y se agrega al archivo de texto
      * @param graph 
+     * @return  String
      */
-    public void updateArchs(MatrixGraph graph) {
+    public String updateArchs(MatrixGraph graph) {
         String archs = "Rutas;" + "\n";
         
         for (int i = 0; i < graph.getAdjMatrix().length; i++) {
@@ -93,7 +96,8 @@ public class ReadFile {
                 }
             }
         }
-        appendTxt(archs);
+        return archs;
+//        appendTxt(archs);
     }
     
     /**
