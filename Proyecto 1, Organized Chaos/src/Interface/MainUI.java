@@ -194,8 +194,11 @@ public class MainUI extends javax.swing.JFrame {
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         try {
             ReadFile nfile = new ReadFile();
-            nfile.updateVerts(mainGraph);
-            nfile.updateArchs(mainGraph);
+            String uVerts = nfile.updateVerts(mainGraph);
+            String uArchs = nfile.updateArchs(mainGraph);
+            
+            nfile.printTxt(uVerts);
+            nfile.appendTxt(uArchs);
             JOptionPane.showMessageDialog(null, "Se ha guardado toda la información correctamente! Hasta luego!");
             System.exit(0);
             
