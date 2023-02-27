@@ -217,16 +217,14 @@ public class JFileChooser extends javax.swing.JFrame {
                 String normal = "";
                 
                 for (int i = 0; i < txtSplitWarehouses.length; i++) {
-                    System.out.println(txtSplitWarehouses[i]);
                     if(txtSplitWarehouses[i].equals("")) {
                        normal += "Almacenes;" + "\n"; 
                     }  else {
                        normal += txtSplitWarehouses[i] + "\n"; 
                     }
                 }
-                System.out.println("");
+                
                 for (int i = 0; i < txtSplitRoutes.length; i++) {
-                    System.out.println(txtSplitRoutes[i]);
                     if(txtSplitRoutes[i].equals("")) {
                        normal += "Rutas;" + "\n";
                     }  else {
